@@ -1,0 +1,13 @@
+ceh_toolkit/
+├── core/
+│   ├── state.py            # [MỚI] Shared state giữa các module (scan chain)
+│   └── async_recon.py      # [MỚI] Async subdomain + port scan
+├── modules/
+│   ├── m06_system_hacking.py   # [MỚI]
+│   ├── m08_sniffing.py         # [MỚI]
+│   ├── m13_wireless.py         # [MỚI]
+│   └── m16_cloud.py            # [MỚI]
+├── wordlists/              # [MỚI] Chứa wordlist nhỏ gọn
+│   ├── users_small.txt
+│   └── passwords_small.txt
+└── config.yaml             # [CẬP NHẬT]

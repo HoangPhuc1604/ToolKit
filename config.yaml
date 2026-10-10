@@ -1,0 +1,193 @@
+# Cấu hình CEH Toolkit
+general:
+  timeout: 300
+  threads: 4
+  output_dir: "./output"
+  log_level: "INFO"
+  plugin_dir: "./plugins"
+
+# Multi-tenant
+tenancy:
+  enabled: true
+  jwt_secret: "${JWT_SECRET}"
+  default_plan: "free"
+  quota:
+    free:       {scans_per_day: 5,   targets_per_scan: 1}
+    pro:        {scans_per_day: 100, targets_per_scan: 20}
+    enterprise: {scans_per_day: -1,  targets_per_scan: -1}
+
+# Các module được kích hoạt theo mặc định
+enabled_modules:
+  - m02_footprinting
+  - m03_scanning
+  - m04_enumeration
+  - m05_vuln_analysis
+  - m11_web_hacking
+  # Các module mới (mặc định tắt vì cần quyền/điều kiện)
+  - m06_system_hacking
+  - m08_sniffing
+  - m13_wireless
+  - m16_cloud
+  - agentless_scan
+  - threat_intel
+  - msf_automation
+  - mobile_scan
+  - container_scan
+  - iac_scan
+
+campaign:
+  chain: true
+  auto_resolve_after_misses: 3
+  # Cron: 0 */6 * * * — mỗi 6 giờ
+  # Interval: 6 (giờ)
+  schedule:
+    mode: "cron"
+    cron: "0 */6 * * *"
+    interval_hours: 6
+
+siem:
+  backend: null            # splunk | elasticsearch | syslog | null
+  # Chỉ dùng khi backend != null
+  splunk:
+    hec_url: "${SPLUNK_HEC_URL}"
+    hec_token: "${SPLUNK_HEC_TOKEN}"
+  elasticsearch:
+    url: "${ELASTIC_URL}"
+    user: "${ELASTIC_USER}"
+    pass: "${ELASTIC_PASS}"
+  syslog:
+    host: "${SYSLOG_HOST}"
+    port: 514
+
+integrations:
+  jira:
+    enabled: false
+    # Đặt qua ENV: JIRA_URL, JIRA_EMAIL, JIRA_TOKEN, JIRA_PROJECT
+  slack:
+    enabled: false
+    # SLACK_WEBHOOK_URL
+  defectdojo:
+    enabled: false
+    # DEFECTDOJO_URL, DEFECTDOJO_TOKEN, DEFECTDOJO_ENGAGEMENT
+
+evasion:
+  default_level: "none"   # none | light | medium | heavy
+  proxy: false            # true → dùng Tor SOCKS5
+
+# Cấu hình từng module
+modules:
+  m02_footprinting:
+    whois: true
+    dns: true
+    subdomain_bruteforce: true
+    theharvester: true
+    google_dorks: true
+    subdomain_wordlist: "/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt"
+  
+  m03_scanning:
+    scan_type: "service"  # basic | service | full | udp | vuln
+    ports: "1-1000"
+    timing: "T4"
+  
+  m04_enumeration:
+    smb: true
+    snmp: true
+    ldap: true
+    nfs: true
+    smtp: true
+  
+  m05_vuln_analysis:
+    searchsploit: true
+    nikto: true
+    sslscan: true
+  
+  m11_web_hacking:
+    nikto: true
+    whatweb: true
+    wpscan: false
+    dirb: true
+    dirb_wordlist: "/usr/share/wordlists/dirb/common.txt"
+
+  m06_system_hacking:
+    hydra: true
+    hash_identify: true
+    john: false
+    hashcat: false
+    user_wordlist: "./wordlists/users_small.txt"
+    pass_wordlist: "./wordlists/passwords_small.txt"
+    hash_file: null
+    hash_value: null
+    hash_mode: "0"
+
+  m08_sniffing:
+    iface: "eth0"
+    duration: 30
+    bpf_filter: ""             # Ví dụ: "tcp port 80 or port 443"
+    tcpdump: true
+    arp_scan: true
+    arp_spoof_detect: true
+    subnet: "192.168.1.0/24"
+
+  m13_wireless:
+    iface: "wlan0"
+    monitor_mode: false        # Đổi thành true nếu muốn bật
+    scan: true
+    scan_duration: 30
+    deauth: false
+    crack_handshake: false
+    capture_file: null
+    bssid: null
+    client: null
+    count: 10
+    wordlist: "/usr/share/wordlists/rockyou.txt"
+
+  m16_cloud:
+    provider: "aws"            # aws | azure | gcp
+    profile: null
+    regions: "us-east-1"
+    prowler: true
+    scoutsuite: false
+    cloudfox: false
+
+  agentless_scan:
+    ssh:
+      user: "root"
+      password: "${SSH_PASSWORD}"
+      key_path: null
+    lynis: true
+    openscap: false
+    oscap_profile: "xccdf_org.ssgproject.content_profile_cis"
+    cis_audit: false
+
+  threat_intel:
+    sources: ["vt", "internetdb", "abuse", "greynoise", "otx"]
+    # API keys qua ENV: VIRUSTOTAL_API_KEY, SHODAN_API_KEY, ...
+
+  msf_automation:
+    enabled: false
+    host: "127.0.0.1"
+    port: 55553
+    password: "${MSF_PASSWORD}"
+    auto_exploit: false
+    payload: "linux/x64/meterpreter/reverse_tcp"
+    wait: 15
+
+  mobile_scan:
+    base_url: "http://localhost:8000"
+    api_key: "${MOBSF_API_KEY}"
+    apk_path: null
+    rescan: false
+
+  container_scan:
+    image: null              # Ví dụ: "nginx:latest"
+    k8s_cluster: false
+    kube_hunter: false
+    k8s_api: null
+    cidr: null
+
+  iac_scan:
+    path: null               # Ví dụ: "./infra/terraform"
+    checkov: true
+    tfsec: true
+    framework: null
+    soft_fail: true

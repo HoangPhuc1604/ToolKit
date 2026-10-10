@@ -1,0 +1,64 @@
+# Core
+python-whois>=0.9.4
+dnspython>=2.6.1
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+PyYAML>=6.0
+jinja2>=3.1.0
+colorama>=0.4.6
+
+# Dashboard
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+websockets>=12.0
+
+# Multi-tenant auth
+pyjwt>=2.8.0
+passlib[bcrypt]>=1.7.4
+python-multipart>=0.0.9
+
+# Sniffing / wireless
+scapy>=2.5.0
+
+# LLM (tùy chọn)
+anthropic>=0.25.0
+openai>=1.20.0
+
+# Multi-target / campaign
+APScheduler>=3.10.0
+Ray>=2.9.0
+
+# Attack graph
+networkx
+pyvis>=0.3.2
+
+# Integrations
+# (requests đã được khai báo ở phần Core)
+
+# Shell handler
+#pwncat-cs>=0.9.0    # chỉ Linux/macOS
+
+# SIEM (tùy chọn)
+elasticsearch>=8.0.0
+splunk-sdk>=2.0.0
+
+# Agentless SSH
+paramiko>=3.4.0
+
+# Metasploit automation
+pymetasploit3>=1.0.0
+
+# Threat intel SDKs (tùy chọn)
+vt-py>=0.18.0
+shodan>=1.31.0
+censys>=2.2.0
+
+# Mobile
+# MobSF chạy riêng, không cần pip
+
+# IaC
+checkov>=3.2.0
+# tfsec cài qua brew/apt
+
+# ML/LLM nâng cao
+scikit-learn>=1.4.0    # anomaly detection trên findings

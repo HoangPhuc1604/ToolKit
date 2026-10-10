@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  ceh-toolkit:
+    build: .
+    container_name: ceh-toolkit
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./output:/app/output
+      - ./plugins:/app/plugins
+      - ./config.yaml:/app/config.yaml:ro
+      - ./wordlists:/app/wordlists:ro
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    # Sniffing / wireless cần NET_ADMIN + NET_RAW
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    # Bỏ comment dòng dưới nếu muốn dùng trực tiếp card WiFi/Mạng từ container (cần cho m13_wireless)
+    # network_mode: host
+    restart: unless-stopped

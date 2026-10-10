@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8">
+<title>CEH Toolkit Report - https://www.kubwallet.com/</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f5f7fa;color:#222}
+  header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;padding:30px;text-align:center}
+  .container{max-width:1200px;margin:20px auto;padding:0 20px}
+  .module{background:#fff;border-radius:10px;padding:20px;margin:20px 0;
+          box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .module h2{margin-top:0;color:#1e3c72;border-bottom:2px solid #eee;padding-bottom:8px}
+  pre{background:#1e1e1e;color:#d4d4d4;padding:15px;border-radius:6px;overflow-x:auto;
+      font-size:12px;max-height:500px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;
+         background:#e3f2fd;color:#1565c0;font-size:12px;margin-left:8px}
+  .meta{color:#666;font-size:13px;text-align:center;margin-top:8px}
+</style></head>
+<body>
+<header>
+  <h1>CEH v13 Toolkit Report</h1>
+  <div class="meta">Target: <b>https://www.kubwallet.com/</b> | 2026-10-10 10:05:24</div>
+</header>
+<div class="container">
+
+  <div class="module">
+    <h2>m02_footprinting <span class="badge">Module ??</span></h2>
+    <pre>{
+  "dns": {
+    "A": [],
+    "AAAA": [],
+    "CNAME": [],
+    "MX": [],
+    "NS": [],
+    "SOA": [],
+    "TXT": []
+  },
+  "subdomains": {
+    "error": "Ch\u01b0a c\u1ea5u h\u00ecnh subdomain_wordlist"
+  },
+  "whois": {
+    "country": "US",
+    "creation_date": "2025-10-05 12:53:14+00:00",
+    "emails": [
+      "abuse@name.com"
+    ],
+    "expiration_date": "2028-10-05 12:53:14+00:00",
+    "name_servers": [
+      "KONNOR.NS.CLOUDFLARE.COM",
+      "MAEVE.NS.CLOUDFLARE.COM"
+    ],
+    "org": "Domain Protection Services, Inc.",
+    "registrar": "Name.com, Inc."
+  },
+  "zone_transfer": {
+    "error": "Kh\u00f4ng l\u1ea5y \u0111\u01b0\u1ee3c NS"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    <h2>m03_scanning <span class="badge">Module ??</span></h2>
+    <pre>{
+  "host_discovery": {
+    "output": "Starting Nmap 7.99 ( https://nmap.org ) at 2026-10-10 10:01 +0000\nNmap done: 0 IP addresses (0 hosts up) scanned in 0.00 seconds\n\n[STDERR]\nUnable to split netmask from target expression: \"https://www.kubwallet.com/\"\nWARNING: No targets were specified, so 0 hosts scanned.\n"
+  },
+  "open_ports": [],
+  "port_scan": {
+    "command": "nmap -Pn -T4 -sV -sC -O -p- https://www.kubwallet.com/",
+    "output": "Starting Nmap 7.99 ( https://nmap.org ) at 2026-10-10 10:01 +0000\nNmap done: 0 IP addresses (0 hosts up) scanned in 0.16 seconds\n\n[STDERR]\nUnable to split netmask from target expression: \"https://www.kubwallet.com/\"\nWARNING: No targets were specified, so 0 hosts scanned.\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    <h2>m04_enumeration <span class="badge">Module ??</span></h2>
+    <pre>{
+  "smb": {
+    "enum4linux": "ERROR: Target hostname \"https://www.kubwallet.com/\" contains some illegal characters\n",
+    "smbclient_list": "\n[STDERR]\ndo_connect: Connection to https: failed (Error NT_STATUS_NOT_FOUND)\n"
+  },
+  "snmp": {
+    "walk_public": "\n[STDERR]\nCreated directory: /var/lib/snmp/cert_indexes\nsnmpwalk: Unknown host (https://www.kubwallet.com/) (No such file or directory)\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    <h2>m05_vuln_analysis <span class="badge">Module ??</span></h2>
+    <pre>{
+  "nikto": {
+    "output": "- Nikto v2.6.1\n---------------------------------------------------------------------------\n+ Target IP:          172.66.153.121\n+ Target Hostname:    www.kubwallet.com\n+ Target Port:        443\n---------------------------------------------------------------------------\n+ SSL Info:           Subject:  /CN=kubwallet.com\n                      CN:       kubwallet.com\n                      SAN:      kubwallet.com, *.kubwallet.com\n                      Ciphers:  TLS_AES_256_GCM_SHA384\n                      Issuer:   /C=US/O=Google Trust Services/CN=WE1\n+ Platform:           Linux/Unix\n+ Start Time:         2026-10-10 10:01:28 (GMT0)\n---------------------------------------------------------------------------\n+ Server: cloudflare\n+ Multiple IPs found: 172.66.153.121, 104.20.17.28\n+ [000287] /: Retrieved access-control-allow-origin header: \\*.\n+ [999979] /: IP address found in the \u0027x-vercel-id\u0027 header. The IP is \"1::7d\". See: https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed\n+ [999100] /: Uncommon header(s) \u0027x-matched-path\u0027 found, with contents: /en.\n+ [999100] /: Uncommon header(s) \u0027content-disposition\u0027 found, with contents: inline.\n+ [999100] /: Uncommon header(s) \u0027x-vercel-id\u0027 found, with contents: sin1::7dtgm-1791626487636-84641f049985.\n+ [999100] /: Uncommon header(s) \u0027x-vercel-cache\u0027 found, with contents: HIT.\n+ [999106] /: Cloudflare detected via cf-ray header. Recommend proxying via Burp or mitmproxy to avoid TLS fingerprint blocks. See: https://github.com/sullo/nikto/wiki/Using-a-Proxy\n+ [999100] /Lbsmbboj.txt: Uncommon header(s) \u0027x-next-error-status\u0027 found, with contents: 404.\n+ [999100] /vn/register/: Uncommon header(s) \u0027refresh\u0027 found, with contents: 0;url=/vn/register.\n+ [999997] /robots.txt: Entry \u0027/vn/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999997] /robots.txt: Entry \u0027/id/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999997] /robots.txt: Entry \u0027/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999997] /robots.txt: Entry \u0027/th/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999996] /robots.txt: contains 5 entries which should be manually viewed. See: https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt\n+ No CGI Directories found (use \u0027-C all\u0027 to force check all possible dirs). CGI tests skipped.\n+ [800264] /: cloudflare - Cloudflare detected via banner. Recommend proxying via Burp or mitmproxy to avoid TLS fingerprint blocks if not already proxying.\n+ [999100] /: Uncommon header(s) \u0027x-vercel-error\u0027 found, with contents: INVALID_REQUEST_METHOD.\n- STATUS: Completed 168 requests (~5% complete, ~9.9 minutes left): currently in plugin \u0027Site Files\u0027\n- STATUS: Running average: Not enough data.\n+ Scan terminated: 20 errors and 16 items reported on the remote host\n+ End Time:           2026-10-10 10:01:56 (GMT0) (28 seconds)\n---------------------------------------------------------------------------\n+ 1 host(s) tested\n\n[STDERR]\n+ ERROR: *** Error limit (20) reached for host, giving up. Last error: opening stream: ssl connect failed. ***\n+ ERROR: *** Consider using mitmproxy to avoid TLS fingerprinting. ***\n"
+  },
+  "searchsploit": {
+    "output": "{\n\t\"SEARCH\": \"https://www.kubwallet.com/\",\n\t\"DB_PATH_EXPLOIT\": \"/opt/exploitdb\",\n\t\"RESULTS_EXPLOIT\": [\t],\n\t\"DB_PATH_SHELLCODE\": \"/opt/exploitdb\",\n\t\"RESULTS_SHELLCODE\": [\t]\n}\n"
+  },
+  "sslscan": {
+    "output": "Version: \u001b[32m2.1.5\u001b[0m\nOpenSSL 3.6.4 25 Aug 2026\n\u001b[0m\n\u001b[32mConnected to 172.66.153.121\u001b[0m\n\nTesting SSL server \u001b[32mwww.kubwallet.com\u001b[0m on port \u001b[32m443\u001b[0m using SNI name \u001b[32mwww.kubwallet.com\u001b[0m\n\n  \u001b[1;34mSSL/TLS Protocols:\u001b[0m\nSSLv2     \u001b[32mdisabled\u001b[0m\nSSLv3     \u001b[32mdisabled\u001b[0m\nTLSv1.0   \u001b[32mdisabled\u001b[0m\nTLSv1.1   \u001b[32mdisabled\u001b[0m\nTLSv1.2   enabled\nTLSv1.3   \u001b[32menabled\u001b[0m\n\n  \u001b[1;34mTLS Fallback SCSV:\u001b[0m\nServer \u001b[32msupports\u001b[0m TLS Fallback SCSV\n\n  \u001b[1;34mTLS renegotiation:\u001b[0m\nSession renegotiation \u001b[32mnot supported\u001b[0m\n\n  \u001b[1;34mTLS Compression:\u001b[0m\nCompression \u001b[32mdisabled\u001b[0m\n\n  \u001b[1;34mHeartbleed:\u001b[0m\nTLSv1.3 \u001b[32mnot vulnerable\u001b[0m to heartbleed\nTLSv1.2 \u001b[32mnot vulnerable\u001b[0m to heartbleed\n\n  \u001b[1;34mSupported Server Cipher(s):\u001b[0m\n\u001b[32mPreferred\u001b[0m \u001b[32mTLSv1.3\u001b[0m  \u001b[32m128\u001b[0m bits  \u001b[32mTLS_AES_128_GCM_SHA256       \u001b[0m\nAccepted  \u001b[32mTLSv1.3\u001b[0m  \u001b[32m256\u001b[0m bits  \u001b[32mTLS_AES_256_GCM_SHA384       \u001b[0m\nAccepted  \u001b[32mTLSv1.3\u001b[0m  \u001b[32m256\u001b[0m bits  \u001b[32mTLS_CHACHA20_POLY1305_SHA256 \u001b[0m\n\u001b[32mPreferred\u001b[0m TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-ECDSA-CHACHA20-POLY1305\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  \u001b[32mECDHE-ECDSA-AES128-GCM-SHA256\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-ECDSA-AES128-SHA        Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-ECDSA-AES256-GCM-SHA384\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-ECDSA-AES256-SHA        Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-ECDSA-AES128-SHA256     Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-ECDSA-AES256-SHA384     Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-RSA-CHACHA20-POLY1305  \u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  \u001b[32mECDHE-RSA-AES128-GCM-SHA256  \u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-RSA-AES128-SHA          Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  AES128-GCM-SHA256            \nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  AES128-SHA                   \nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-RSA-AES256-GCM-SHA384  \u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-RSA-AES256-SHA          Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  AES256-GCM-SHA384            \nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  AES256-SHA                   \nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-RSA-AES128-SHA256       Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  AES128-SHA256                \nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-RSA-AES256-SHA384       Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  AES256-SHA256                \n\n  \u001b[1;34mServer Key Exchange Group(s):\u001b[0m\nTLSv1.3  \u001b[32m128\u001b[0m bits  secp256r1 (NIST P-256)\u001b[0m\nTLSv1.3  \u001b[32m192\u001b[0m bits  secp384r1 (NIST P-384)\u001b[0m\nTLSv1.3  \u001b[32m260\u001b[0m bits  secp521r1 (NIST P-521)\u001b[0m\nTLSv1.3  \u001b[32m128\u001b[0m bits  \u001b[32mx25519\u001b[0m\nTLSv1.2  \u001b[32m128\u001b[0m bits  secp256r1 (NIST P-256)\u001b[0m\nTLSv1.2  \u001b[32m192\u001b[0m bits  secp384r1 (NIST P-384)\u001b[0m\nTLSv1.2  \u001b[32m260\u001b[0m bits  secp521r1 (NIST P-521)\u001b[0m\nTLSv1.2  \u001b[32m128\u001b[0m bits  \u001b[32mx25519\u001b[0m\n\n  \u001b[1;34mSSL Certificate:\u001b[0m\nSignature Algorithm: ecdsa-with-SHA256\nECC Curve Name:      prime256v1\nECC Key Strength:    128\u001b[0m\n\nSubject:  kubwallet.com\nAltnames: DNS:kubwallet.com, DNS:*.kubwallet.com\nIssuer:   WE1\n\nNot valid before: \u001b[32mAug 16 06:15:59 2026 GMT\u001b[0m\nNot valid after:  \u001b[32mNov 14 07:15:40 2026 GMT\u001b[0m\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    <h2>m11_web_hacking <span class="badge">Module ??</span></h2>
+    <pre>{
+  "dirb": {
+    "output": "[!] Timeout sau 180s"
+  },
+  "nikto": {
+    "output": "- Nikto v2.6.1\n---------------------------------------------------------------------------\n+ Target IP:          172.66.153.121\n+ Target Hostname:    www.kubwallet.com\n+ Target Port:        443\n---------------------------------------------------------------------------\n+ SSL Info:           Subject:  /CN=kubwallet.com\n                      CN:       kubwallet.com\n                      SAN:      kubwallet.com, *.kubwallet.com\n                      Ciphers:  TLS_AES_256_GCM_SHA384\n                      Issuer:   /C=US/O=Google Trust Services/CN=WE1\n+ Platform:           Linux/Unix\n+ Start Time:         2026-10-10 10:02:04 (GMT0)\n---------------------------------------------------------------------------\n+ Server: cloudflare\n+ Multiple IPs found: 172.66.153.121, 104.20.17.28\n+ [000287] /: Retrieved access-control-allow-origin header: \\*.\n+ [999100] /: Uncommon header(s) \u0027x-vercel-id\u0027 found, with contents: sin1::jppbr-1791626524541-79f4dfad2109.\n+ [999100] /: Uncommon header(s) \u0027x-vercel-cache\u0027 found, with contents: HIT.\n+ [999100] /: Uncommon header(s) \u0027content-disposition\u0027 found, with contents: inline.\n+ [999100] /: Uncommon header(s) \u0027x-matched-path\u0027 found, with contents: /en.\n+ [999106] /: Cloudflare detected via cf-ray header. Recommend proxying via Burp or mitmproxy to avoid TLS fingerprint blocks. See: https://github.com/sullo/nikto/wiki/Using-a-Proxy\n+ [999979] /: IP address found in the \u0027x-vercel-id\u0027 header. The IP is \"1::c\". See: https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed\n+ [999100] /itq5LY3p.txt: Uncommon header(s) \u0027x-next-error-status\u0027 found, with contents: 404.\n+ [999100] /register/: Uncommon header(s) \u0027refresh\u0027 found, with contents: 0;url=/register.\n+ [999997] /robots.txt: Entry \u0027/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999997] /robots.txt: Entry \u0027/th/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999997] /robots.txt: Entry \u0027/id/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999997] /robots.txt: Entry \u0027/vn/register/\u0027 is returned a non-forbidden or redirect HTTP code (308). See: https://portswigger.net/kb/issues/00600600_robots-txt-file\n+ [999996] /robots.txt: contains 5 entries which should be manually viewed. See: https://developer.mozilla.org/en-US/docs/Glossary/Robots.txt\n+ No CGI Directories found (use \u0027-C all\u0027 to force check all possible dirs). CGI tests skipped.\n+ [800264] /: cloudflare - Cloudflare detected via banner. Recommend proxying via Burp or mitmproxy to avoid TLS fingerprint blocks if not already proxying.\n+ [999100] /: Uncommon header(s) \u0027x-vercel-error\u0027 found, with contents: INVALID_REQUEST_METHOD.\n- STATUS: Completed 168 requests (~2% complete, ~21.7 minutes left): currently in plugin \u0027Site Files\u0027\n- STATUS: Running average: Not enough data.\n+ Scan terminated: 20 errors and 16 items reported on the remote host\n+ End Time:           2026-10-10 10:02:34 (GMT0) (30 seconds)\n---------------------------------------------------------------------------\n+ 1 host(s) tested\n\n[STDERR]\n+ ERROR: *** Error limit (20) reached for host, giving up. Last error: opening stream: ssl connect failed. ***\n+ ERROR: *** Consider using mitmproxy to avoid TLS fingerprinting. ***\n"
+  },
+  "whatweb": {
+    "output": "\u001b[1m\u001b[34mhttps://www.kubwallet.com/\u001b[0m [200 OK] \u001b[1mCountry\u001b[0m[\u001b[0m\u001b[22mRESERVED\u001b[0m][\u001b[1m\u001b[31mZZ\u001b[0m], \u001b[1mEmail\u001b[0m[\u001b[0m\u001b[22mbusiness@bitkubblockchain.com,kubwallet@business.com\u001b[0m], \u001b[1mFrame\u001b[0m, \u001b[1mGoogle-Tag-Manager\u001b[0m, \u001b[1mHTML5\u001b[0m, \u001b[1mHTTPServer\u001b[0m[\u001b[1m\u001b[36mcloudflare\u001b[0m], \u001b[1mIP\u001b[0m[\u001b[0m\u001b[22m172.66.153.121\u001b[0m], \u001b[1mOpen-Graph-Protocol\u001b[0m, \u001b[1mScript\u001b[0m[\u001b[0m\u001b[22mapplication/json,application/ld+json,text/javascript\u001b[0m], \u001b[1mStrict-Transport-Security\u001b[0m[\u001b[0m\u001b[22mmax-age=63072000; includeSubDomains\u001b[0m], \u001b[1mTitle\u001b[0m[\u001b[1m\u001b[33mKUB Wallet | Your Everyday Wallet\u001b[0m], \u001b[1mUncommonHeaders\u001b[0m[\u001b[0m\u001b[22maccess-control-allow-origin,permissions-policy,referrer-policy,x-content-type-options,x-matched-path,x-vercel-cache,x-vercel-id,cf-cache-status,cf-ray\u001b[0m], \u001b[1mX-Frame-Options\u001b[0m[\u001b[0m\u001b[22mSAMEORIGIN\u001b[0m]\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    <h2>m06_system_hacking <span class="badge">Module ??</span></h2>
+    <pre>{
+  "hash_identify": {
+    "error": "Ch\u01b0a c\u1ea5u h\u00ecnh hash_value"
+  },
+  "hydra": {
+    "ftp:21": "Hydra v9.7 (c) 2023 by van Hauser/THC \u0026 David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).\n\nHydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-10-10 10:05:24\n[ERROR] Invalid target definition!\n[ERROR] Either you use \"www.example.com module [optional-module-parameters]\" *or* you use the \"module://www.example.com/optional-module-parameters\" syntax!\n",
+    "ssh:22": "Hydra v9.7 (c) 2023 by van Hauser/THC \u0026 David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).\n\nHydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-10-10 10:05:24\n[ERROR] Invalid target definition!\n[ERROR] Either you use \"www.example.com module [optional-module-parameters]\" *or* you use the \"module://www.example.com/optional-module-parameters\" syntax!\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    <h2>_mitre_attack <span class="badge">Module ??</span></h2>
+    <pre>{
+  "T1018": {
+    "name": "Remote System Discovery",
+    "sources": [
+      "m03_scanning.host_discovery"
+    ]
+  },
+  "T1046": {
+    "name": "Network Service Discovery",
+    "sources": [
+      "m03_scanning.port_scan",
+      "m04_enumeration.snmp"
+    ]
+  },
+  "T1083": {
+    "name": "File and Directory Discovery",
+    "sources": [
+      "m11_web_hacking.dirb"
+    ]
+  },
+  "T1087.001": {
+    "name": "Account Discovery: Local Account",
+    "sources": [
+      "m04_enumeration.snmp"
+    ]
+  },
+  "T1087.002": {
+    "name": "Account Discovery: Domain Account",
+    "sources": [
+      "m04_enumeration.smb"
+    ]
+  },
+  "T1110.001": {
+    "name": "Brute Force: Password Guessing",
+    "sources": [
+      "m06_system_hacking.hydra"
+    ]
+  },
+  "T1110.003": {
+    "name": "Brute Force: Password Spraying",
+    "sources": [
+      "m06_system_hacking.hydra"
+    ]
+  },
+  "T1110.004": {
+    "name": "Brute Force: Credential Stuffing",
+    "sources": [
+      "m06_system_hacking.hydra"
+    ]
+  },
+  "T1135": {
+    "name": "Network Share Discovery",
+    "sources": [
+      "m04_enumeration.smb"
+    ]
+  },
+  "T1588.006": {
+    "name": "Obtain Capabilities: Vulnerabilities",
+    "sources": [
+      "m05_vuln_analysis.searchsploit"
+    ]
+  },
+  "T1590.001": {
+    "name": "Gather Victim Network Info: Domain Properties",
+    "sources": [
+      "m02_footprinting.whois"
+    ]
+  },
+  "T1590.002": {
+    "name": "Gather Victim Network Info: DNS",
+    "sources": [
+      "m02_footprinting.dns"
+    ]
+  },
+  "T1592.002": {
+    "name": "Gather Victim Host Info: Software",
+    "sources": [
+      "m11_web_hacking.whatweb"
+    ]
+  },
+  "T1595.001": {
+    "name": "Active Scanning: Scanning IP Blocks",
+    "sources": [
+      "m03_scanning.host_discovery"
+    ]
+  },
+  "T1595.002": {
+    "name": "Active Scanning: Vulnerability Scanning",
+    "sources": [
+      "m03_scanning.port_scan",
+      "m05_vuln_analysis.sslscan",
+      "m05_vuln_analysis.nikto",
+      "m11_web_hacking.nikto"
+    ]
+  },
+  "T1595.003": {
+    "name": "Active Scanning: Wordlist Scanning",
+    "sources": [
+      "m11_web_hacking.dirb"
+    ]
+  },
+  "T1596.002": {
+    "name": "Search Open Technical Databases: WHOIS",
+    "sources": [
+      "m02_footprinting.whois"
+    ]
+  },
+  "T1596.005": {
+    "name": "Search Open Technical Databases: Scan Databases",
+    "sources": [
+      "m05_vuln_analysis.searchsploit"
+    ]
+  }
+}</pre>
+  </div>
+
+</div>
+</body></html>

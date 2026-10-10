@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>CEH Toolkit Dashboard</title>
+<style>
+  :root{--bg:#0f1115;--panel:#181b22;--border:#2a2f3a;--fg:#e5e9f0;
+        --accent:#4a9eff;--ok:#4caf50;--warn:#ff9800;--err:#f44336}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:ui-monospace,Menlo,monospace;
+       font-size:13px;height:100vh;display:grid;
+       grid-template-columns:340px 1fr;grid-template-rows:60px 1fr;
+       grid-template-areas:"header header" "sidebar main"}
+  header{grid-area:header;background:var(--panel);border-bottom:1px solid var(--border);
+         display:flex;align-items:center;padding:0 20px;gap:16px}
+  header h1{font-size:16px;font-weight:600;color:var(--accent)}
+  header .status{margin-left:auto;color:#888;font-size:12px}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;
+       background:var(--err);margin-right:6px}
+  .dot.on{background:var(--ok)}
+  aside{grid-area:sidebar;background:var(--panel);border-right:1px solid var(--border);
+        padding:16px;overflow-y:auto}
+  main{grid-area:main;display:flex;flex-direction:column;overflow:hidden}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;
+         padding:14px;margin-bottom:12px}
+  .panel label{display:block;font-size:11px;text-transform:uppercase;
+               color:#888;margin-bottom:6px}
+  input,select,button{width:100%;background:#0c0e13;border:1px solid var(--border);
+    color:var(--fg);padding:8px 10px;border-radius:6px;font-family:inherit;
+    font-size:13px;margin-bottom:10px}
+  button{background:var(--accent);border:none;color:#fff;font-weight:600;
+         cursor:pointer;transition:.2s}
+  button:hover{background:#357bd8}
+  button:disabled{background:#444;cursor:not-allowed}
+  #log{flex:1;overflow-y:auto;padding:12px}
+  .evt{padding:6px 10px;margin-bottom:4px;border-left:3px solid var(--border);
+       background:#12151b;border-radius:4px;font-size:12px;
+       display:grid;grid-template-columns:70px 90px 1fr;gap:10px;align-items:start}
+  .evt .ts{color:#666;font-size:11px}
+  .evt .mod{color:var(--accent);font-weight:600}
+  .evt.start{border-color:var(--accent)}
+  .evt.end{border-color:var(--ok)}
+  .evt.error{border-color:var(--err)}
+  .evt .msg{word-break:break-word}
+  .evt pre{background:#0a0c10;padding:6px;border-radius:4px;margin-top:4px;
+           font-size:11px;overflow-x:auto;max-height:150px}
+  .mitre{background:#1a1f2b;border-left:3px solid var(--warn);
+         padding:8px;border-radius:4px;margin-bottom:6px}
+  .mitre .tid{color:var(--warn);font-weight:600}
+  h3{font-size:12px;color:#aaa;text-transform:uppercase;margin:12px 0 6px}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ CEH Toolkit Dashboard</h1>
+  <span class="status"><span class="dot" id="ws-dot"></span><span id="ws-status">Đang kết nối...</span></span>
+</header>
+
+<aside>
+  <div class="panel">
+    <label>Target</label>
+    <input id="target" placeholder="example.com hoặc 192.168.1.10" value="">
+    <label>Profile</label>
+    <select id="profile">
+      <option value="quick">quick — nhanh, ồn</option>
+      <option value="normal" selected>normal — cân bằng</option>
+      <option value="stealth">stealth — chậm, ít noise</option>
+      <option value="paranoid">paranoid — cực chậm + jitter</option>
+      <option value="loud">loud — deep pentest</option>
+    </select>
+    <label><input type="checkbox" id="chain" style="width:auto"> Scan chain (tuần tự)</label>
+    <button id="btn-scan" onclick="startScan()">▶ Bắt đầu Scan</button>
+  </div>
+
+  <div class="panel">
+    <h3>MITRE ATT&CK</h3>
+    <div id="mitre-list" style="font-size:11px;color:#888">
+      Chưa có dữ liệu. Chạy scan để xem techniques được phát hiện.
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Reports</h3>
+    <div id="reports" style="font-size:11px;color:#888">
+      Chưa có báo cáo.
+    </div>
+  </div>
+</aside>
+
+<main>
+  <div id="log"></div>
+</main>
+
+<script>
+const log = document.getElementById('log');
+const wsDot = document.getElementById('ws-dot');
+const wsStatus = document.getElementById('ws-status');
+let ws;
+
+function connect() {
+  ws = new WebSocket(`ws://${location.host}/ws`);
+  ws.onopen = () => {
+    wsDot.classList.add('on');
+    wsStatus.textContent = 'Đã kết nối';
+  };
+  ws.onclose = () => {
+    wsDot.classList.remove('on');
+    wsStatus.textContent = 'Mất kết nối. Đang thử lại...';
+    setTimeout(connect, 2000);
+  };
+  ws.onerror = () => { wsDot.classList.remove('on'); };
+  ws.onmessage = (e) => {
+    try {
+      const evt = JSON.parse(e.data);
+      renderEvent(evt);
+    } catch {}
+  };
+}
+
+function renderEvent(evt) {
+  if (evt.type === 'report_ready') {
+    const r = document.getElementById('reports');
+    r.innerHTML = `
+      <div style="margin-bottom:6px">
+        <a href="file://${evt.data.html}" style="color:#4a9eff">HTML</a> ·
+        <a href="file://${evt.data.json}" style="color:#4a9eff">JSON</a>
+      </div>` + r.innerHTML;
+    return;
+  }
+
+  const div = document.createElement('div');
+  const cls = evt.type.includes('error') ? 'error'
+            : evt.type.includes('start') ? 'start'
+            : evt.type.includes('end') ? 'end' : '';
+  div.className = `evt ${cls}`;
+
+  const ts = (evt.ts || '').split('T')[1]?.split('.')[0] || '';
+  const mod = evt.module || evt.type;
+
+  let msg = '';
+  if (evt.type === 'scan_start') {
+    msg = `Bắt đầu scan ${evt.data.target} → ${evt.data.modules.join(', ')}`;
+  } else if (evt.type === 'module_start') {
+    msg = `Chạy module ${evt.data.module}`;
+  } else if (evt.type === 'module_end') {
+    msg = `Xong ${evt.data.module} (${evt.data.duration}s)`;
+  } else if (evt.type === 'module_error' || evt.type === 'scan_error') {
+    msg = evt.data.error;
+  } else {
+    msg = JSON.stringify(evt.data).slice(0, 300);
+  }
+
+  div.innerHTML = `
+    <span class="ts">${ts}</span>
+    <span class="mod">${mod}</span>
+    <span class="msg">${msg}</span>`;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function startScan() {
+  const target = document.getElementById('target').value.trim();
+  if (!target) return alert('Nhập target');
+  document.getElementById('btn-scan').disabled = true;
+  try {
+    const res = await fetch('/api/scan', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        target,
+        profile: document.getElementById('profile').value,
+        chain: document.getElementById('chain').checked,
+      })
+    });
+    if (!res.ok) alert('Lỗi: ' + res.status);
+  } finally {
+    setTimeout(() => document.getElementById('btn-scan').disabled = false, 2000);
+  }
+}
+
+connect();
+</script>
+</body>
+</html>

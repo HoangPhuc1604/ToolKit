@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>CEH Tactical Toolkit - Attack Graph Visualizer</title>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+      overflow: hidden;
+    }
+    #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 52px;
+      background: rgba(22, 27, 34, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 100;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #58a6ff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #net {
+      width: 100vw;
+      height: calc(100vh - 52px);
+      margin-top: 52px;
+    }
+    #legend {
+      position: fixed;
+      top: 68px;
+      right: 16px;
+      background: rgba(22, 27, 34, 0.92);
+      border: 1px solid #30363d;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      z-index: 99;
+    }
+    #legend b { display: block; margin-bottom: 10px; color: #58a6ff; font-size: 14px; }
+    .legend-item { display: flex; align-items: center; margin-bottom: 8px; }
+    .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 10px; }
+    #toolbar {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(22, 27, 34, 0.92);
+      border: 1px solid #30363d;
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: flex;
+      gap: 10px;
+      z-index: 99;
+    }
+    button {
+      background: #238636;
+      border: none;
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    button:hover { background: #2ea043; }
+    button.secondary { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; }
+    button.secondary:hover { background: #30363d; }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <div class="title">⚡ CEH Attack Path & Graph Visualizer (vis.js)</div>
+    <div id="stats" style="font-size: 13px; color: #8b949e;">Interactive Kill Chain Topology</div>
+  </div>
+
+  <div id="net"></div>
+
+  <div id="legend">
+    <b>Chú thích đối tượng</b>
+    <div class="legend-item"><span class="dot" style="background:#4a9eff"></span> Host (Mục tiêu)</div>
+    <div class="legend-item"><span class="dot" style="background:#ff9800"></span> Service / Port</div>
+    <div class="legend-item"><span class="dot" style="background:#d32f2f"></span> Lỗ hổng Critical</div>
+    <div class="legend-item"><span class="dot" style="background:#f44336"></span> Lỗ hổng High/Medium</div>
+  </div>
+
+  <div id="toolbar">
+    <button onclick="network.fit()">Căn chỉnh (Fit View)</button>
+    <button class="secondary" onclick="togglePhysics()">Bật/Tắt Physics</button>
+  </div>
+
+  <script>
+    // Dữ liệu mẫu ban đầu (sẽ nạp từ API hoặc render động)
+    const initialNodes = window.__GRAPH_NODES__ || [
+      { id: '192.168.1.100', label: '192.168.1.100\n(Web Server)', color: '#4a9eff', shape: 'box' },
+      { id: '192.168.1.100:80', label: '80/http\n(Apache 2.4.49)', color: '#ff9800', shape: 'dot' },
+      { id: '192.168.1.100:22', label: '22/ssh\n(OpenSSH 8.2)', color: '#ff9800', shape: 'dot' },
+      { id: 'vuln:CVE-2021-41773', label: 'CVE-2021-41773\nPath Traversal & RCE', color: '#d32f2f', shape: 'dot', size: 22 }
+    ];
+
+    const initialEdges = window.__GRAPH_EDGES__ || [
+      { from: '192.168.1.100', to: '192.168.1.100:80', label: 'runs' },
+      { from: '192.168.1.100', to: '192.168.1.100:22', label: 'runs' },
+      { from: '192.168.1.100:80', to: 'vuln:CVE-2021-41773', label: 'exposes', color: { color: '#d32f2f' }, width: 2 }
+    ];
+
+    const nodes = new vis.DataSet(initialNodes);
+    const edges = new vis.DataSet(initialEdges);
+    const container = document.getElementById('net');
+
+    let physicsOn = true;
+    const options = {
+      physics: {
+        stabilization: true,
+        barnesHut: { gravitationalConstant: -7000, centralGravity: 0.3, springLength: 100 }
+      },
+      interaction: { hover: true, tooltipDelay: 150 },
+      nodes: { font: { color: '#e5e9f0', size: 12 } },
+      edges: { arrows: 'to', color: { color: '#8b949e', highlight: '#58a6ff' }, smooth: true }
+    };
+
+    const network = new vis.Network(container, { nodes, edges }, options);
+
+    function togglePhysics() {
+      physicsOn = !physicsOn;
+      network.setOptions({ physics: { enabled: physicsOn } });
+    }
+  </script>
+</body>
+</html>

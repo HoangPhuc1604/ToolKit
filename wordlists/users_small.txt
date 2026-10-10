@@ -1,0 +1,11 @@
+root
+admin
+administrator
+user
+guest
+msfadmin
+pi
+test
+ubuntu
+postgres
+oracle
