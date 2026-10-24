@@ -27,7 +27,11 @@ class BaseModule(ABC):
         return shutil.which(tool) is not None
 
     def _run_cmd(self, cmd, timeout=120, shell=False):
-        """Chạy lệnh hệ thống, trả về stdout hoặc thông báo lỗi."""
+        """Chạy lệnh hệ thống, trả về stdout hoặc thông báo lỗi.
+        
+        Args:
+            timeout: Số giây chờ. Nếu None -> chạy vô thời hạn (dùng cho nmap -p-).
+        """
         try:
             proc = subprocess.run(
                 cmd, capture_output=True, text=True,

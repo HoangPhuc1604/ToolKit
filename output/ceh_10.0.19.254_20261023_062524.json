@@ -1,0 +1,20 @@
+{
+  "m13_wireless": {
+    "interfaces": {
+      "output": "You have neither ip (iproute2) nor ifconfig installed.\nPlease install one of them from your distro's package manager.\n"
+    },
+    "scan": {
+      "aps": [],
+      "count": 0,
+      "output": "\u001b[0mInterface wlan0: \nFailed initializing wireless card(s): wlan0\n\n[STDERR]\nnl80211 not found.\nioctl(SIOCGIFINDEX) failed: No such device\n"
+    }
+  },
+  "_mitre_attack": {
+    "T1016.002": {
+      "name": "System Network Configuration Discovery: Wi-Fi Discovery",
+      "sources": [
+        "m13_wireless.scan"
+      ]
+    }
+  }
+}

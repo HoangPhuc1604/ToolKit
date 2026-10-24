@@ -29,7 +29,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <div class="container">
 {% for name, data in results.items() %}
   <div class="module">
-    <h2>{{ name }} <span class="badge">Module {{ data.get('_module_id','??') }}</span></h2>
+    {% if data is mapping %}
+      <h2>{{ name }} <span class="badge">Module {{ data.get('_module_id','??') }}</span></h2>
+    {% else %}
+      <h2>{{ name }} <span class="badge">Analysis Results</span></h2>
+    {% endif %}
     <pre>{{ data | tojson(indent=2) }}</pre>
   </div>
 {% endfor %}

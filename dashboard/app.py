@@ -2,6 +2,10 @@
 import asyncio
 import json
 import threading
+import pydantic.main
+from typing import Union, Set, Dict, Any
+if not hasattr(pydantic.main, 'IncEx'):
+    pydantic.main.IncEx = Union[Set[int], Set[str], Dict[int, Any], Dict[str, Any]]
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request
 from fastapi.responses import HTMLResponse, JSONResponse

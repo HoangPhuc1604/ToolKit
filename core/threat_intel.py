@@ -4,6 +4,7 @@ import time
 import requests
 from functools import lru_cache
 from core.logger import get_logger
+from core.base_module import BaseModule
 
 LOG = get_logger("ceh.ti")
 
@@ -12,13 +13,28 @@ class ThreatIntelClient:
     """Client đa nguồn, có cache và rate-limit."""
 
     def __init__(self):
-        self.vt_key = os.environ.get("VIRUSTOTAL_API_KEY")
-        self.shodan_key = os.environ.get("SHODAN_API_KEY")
-        self.censys_id = os.environ.get("CENSYS_API_ID")
-        self.censys_secret = os.environ.get("CENSYS_API_SECRET")
-        self.otx_key = os.environ.get("OTX_API_KEY")
-        self.abuse_key = os.environ.get("ABUSEIPDB_API_KEY")
-        self.greynoise_key = os.environ.get("GREYNOISE_API_KEY")
+        # Đọc từ biến môi trường trước, nếu không có dùng giá trị mặc định
+        self.vt_key = os.environ.get(
+            "VIRUSTOTAL_API_KEY",
+            "832f98047008291498e727e6d175df1e45466c71ab2b09168f5af16afc6412c5")
+        self.shodan_key = os.environ.get(
+            "SHODAN_API_KEY",
+            "t6fr7GNCXbNB2IbkCRZCwFQ6CMZR34gWcJh1")
+        self.censys_id = os.environ.get(
+            "CENSYS_API_ID",
+            "censys_QfJneNib_wME5QFbwr7C7qo9btyTvcG9g")
+        self.censys_secret = os.environ.get(
+            "CENSYS_API_SECRET",
+            "censys_QfJneNib_wME5QFbwr7C7qo9btyTvcG9g")
+        self.otx_key = os.environ.get(
+            "OTX_API_KEY",
+            "ef1cc82f29435363aad9d4e1a3269b01807579d9aba9f3ea0acd55d9d4723cd")
+        self.abuse_key = os.environ.get(
+            "ABUSEIPDB_API_KEY",
+            "a779b3796af99fac8e7b77db0ac4bee0ddb6beb6a280fcc442d49fccb57993a306b1c2b6cf01ef60")
+        self.greynoise_key = os.environ.get(
+            "GREYNOISE_API_KEY",
+            "HoP8EAuhiacmVZKLbfFFDfl3hGJ4ANwNDLxgTeCbEzei78nP8ljckReX2Z1v8ZBR")
         self._rate_limiters = {}
 
     def _throttle(self, name, min_interval):

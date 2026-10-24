@@ -37,7 +37,7 @@ class Module(BaseModule):
         self.results["open_ports"] = self._parse_open_ports(
             self.results["port_scan"].get("output", ""))
 
-        # ============ MỚI: ghi vào Shared State để chain ============
+        # ============ ghi vào Shared State để chain ============
         from core.state import STATE
         port_nums = [p["port"] for p in self.results["open_ports"]]
         STATE.set("target", self.target)
@@ -61,6 +61,7 @@ class Module(BaseModule):
         elif scan_type == "service":
             cmd = base + ["-sV", "-sC", "-p", ports, self.target]
         elif scan_type == "full":
+            # Quét toàn bộ 65535 cổng, có OS detection
             cmd = base + ["-sV", "-sC", "-O", "-p-", self.target]
         elif scan_type == "udp":
             cmd = base + ["-sU", "--top-ports", "50", self.target]
@@ -75,11 +76,23 @@ class Module(BaseModule):
             cmd = evasion_nmap_command(cmd, self.evasion_level, self.proxy_router)
             self.logger.info(f"[M03] Evasion: {self.evasion_level}")
 
+        # ============ XỬ LÝ TIMEOUT ============
+        # Nếu scan_type == "full" -> KHÔNG giới hạn thời gian (chờ nmap chạy xong)
+        # Nếu config có timeout: null -> cũng KHÔNG giới hạn thời gian
+        # Ngược lại dùng timeout từ config hoặc mặc định 300s
+        if scan_type == "full":
+            timeout = None  # subprocess.run với timeout=None = chạy vô thời hạn
+            self.logger.info("[M03] Full scan - KHÔNG giới hạn thời gian")
+        else:
+            cfg_timeout = self.config.get("timeout")
+            timeout = cfg_timeout if cfg_timeout else 300
+
         self.logger.info(f"[M03] Chạy: {' '.join(cmd)}")
-        out = self._run_cmd(cmd, timeout=self.config.get("timeout", 300) or 300)
+        out = self._run_cmd(cmd, timeout=timeout)
         
         return {
             "command": " ".join(cmd),
+            "timeout": "unlimited" if timeout is None else f"{timeout}s",
             "output": out
         }
 

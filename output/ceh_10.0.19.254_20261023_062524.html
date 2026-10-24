@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8">
+<title>CEH Toolkit Report - 10.0.19.254</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f5f7fa;color:#222}
+  header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;padding:30px;text-align:center}
+  .container{max-width:1200px;margin:20px auto;padding:0 20px}
+  .module{background:#fff;border-radius:10px;padding:20px;margin:20px 0;
+          box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .module h2{margin-top:0;color:#1e3c72;border-bottom:2px solid #eee;padding-bottom:8px}
+  pre{background:#1e1e1e;color:#d4d4d4;padding:15px;border-radius:6px;overflow-x:auto;
+      font-size:12px;max-height:500px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;
+         background:#e3f2fd;color:#1565c0;font-size:12px;margin-left:8px}
+  .meta{color:#666;font-size:13px;text-align:center;margin-top:8px}
+</style></head>
+<body>
+<header>
+  <h1>CEH v13 Toolkit Report</h1>
+  <div class="meta">Target: <b>10.0.19.254</b> | 2026-10-23 06:25:24</div>
+</header>
+<div class="container">
+
+  <div class="module">
+    
+      <h2>m13_wireless <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "interfaces": {
+    "output": "You have neither ip (iproute2) nor ifconfig installed.\nPlease install one of them from your distro\u0027s package manager.\n"
+  },
+  "scan": {
+    "aps": [],
+    "count": 0,
+    "output": "\u001b[0mInterface wlan0: \nFailed initializing wireless card(s): wlan0\n\n[STDERR]\nnl80211 not found.\nioctl(SIOCGIFINDEX) failed: No such device\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>_mitre_attack <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "T1016.002": {
+    "name": "System Network Configuration Discovery: Wi-Fi Discovery",
+    "sources": [
+      "m13_wireless.scan"
+    ]
+  }
+}</pre>
+  </div>
+
+</div>
+</body></html>

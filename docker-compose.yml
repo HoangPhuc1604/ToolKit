@@ -1,6 +1,9 @@
 version: "3.9"
 
 services:
+  # ============================================================
+  # SERVICE CHÍNH: CEH Toolkit
+  # ============================================================
   ceh-toolkit:
     build: .
     container_name: ceh-toolkit
@@ -14,10 +17,163 @@ services:
     environment:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
-    # Sniffing / wireless cần NET_ADMIN + NET_RAW
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY:-}
+      - SHODAN_API_KEY=${SHODAN_API_KEY:-}
+      - ABUSEIPDB_API_KEY=${ABUSEIPDB_API_KEY:-}
+      - GREYNOISE_API_KEY=${GREYNOISE_API_KEY:-}
+      - OTX_API_KEY=${OTX_API_KEY:-}
+      - CENSYS_API_ID=${CENSYS_API_ID:-}
+      - CENSYS_API_SECRET=${CENSYS_API_SECRET:-}
+      - MOBSF_URL=http://mobsf:8000
+      - MOBSF_API_KEY=${MOBSF_API_KEY:-}
+      - CALDERA_URL=http://caldera:8888
+      - CALDERA_API_KEY=${CALDERA_API_KEY:-admin}
+      - ELASTIC_URL=http://elasticsearch:9200
+      - SPLUNK_URL=https://splunk:8089
+      - SPLUNK_HEC_URL=https://splunk:8088
+      - SPLUNK_HEC_TOKEN=${SPLUNK_HEC_TOKEN:-}
+      - JIRA_URL=${JIRA_URL:-}
+      - JIRA_EMAIL=${JIRA_EMAIL:-}
+      - JIRA_TOKEN=${JIRA_TOKEN:-}
+      - JIRA_PROJECT=${JIRA_PROJECT:-SEC}
+      - DEFECTDOJO_URL=http://defectdojo:8080
+      - DEFECTDOJO_TOKEN=${DEFECTDOJO_TOKEN:-}
+      - DEFECTDOJO_ENGAGEMENT=${DEFECTDOJO_ENGAGEMENT:-1}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL:-}
     cap_add:
       - NET_ADMIN
       - NET_RAW
-    # Bỏ comment dòng dưới nếu muốn dùng trực tiếp card WiFi/Mạng từ container (cần cho m13_wireless)
-    # network_mode: host
     restart: unless-stopped
+    depends_on:
+      - mobsf
+      - elasticsearch
+      - defectdojo
+
+  # ============================================================
+  # MOBSF (port 8001)
+  # ============================================================
+  mobsf:
+    image: opensecurity/mobile-security-framework-mobsf:latest
+    container_name: mobsf
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./mobsf_data:/home/mobsf/.MobSF
+    restart: unless-stopped
+
+  # ============================================================
+  # CALDERA - MITRE Adversary Emulation (port 8888)
+  # Build từ source đã clone về máy
+  # ============================================================
+  caldera:
+    build:
+      context: ./caldera-src
+    container_name: caldera
+    ports:
+      - "8888:8888"
+    environment:
+      - CALDERA_API_KEY=${CALDERA_API_KEY:-admin}
+    restart: unless-stopped
+
+  # ============================================================
+  # ELASTICSEARCH (port 9200) - ĐÃ ĐỔI sang Docker Hub
+  # ============================================================
+  elasticsearch:
+    image: elastic/elasticsearch:8.14.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - bootstrap.memory_lock=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    restart: unless-stopped
+
+  # ============================================================
+  # KIBANA (port 5601) - ĐÃ ĐỔI sang Docker Hub
+  # ============================================================
+  kibana:
+    image: elastic/kibana:8.14.0
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+  # ============================================================
+  # SPLUNK (port 8009 UI, 8089 API, 8088 HEC)
+  # ============================================================
+  splunk:
+    image: splunk/splunk:latest
+    container_name: splunk
+    ports:
+      - "8089:8089"
+      - "8009:8000"
+      - "8088:8088"
+      - "9997:9997"
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_PASSWORD=${SPLUNK_PASSWORD:-Changeme123}
+      - SPLUNK_HEC_TOKEN=${SPLUNK_HEC_TOKEN:-ceh-toolkit-hec-token}
+    volumes:
+      - splunk-data:/opt/splunk/var
+    restart: unless-stopped
+
+# ============================================================
+  # DEFECTDOJO (port 8080) + DB + Redis
+  # ============================================================
+  defectdojo-db:
+    image: postgres:16-alpine
+    container_name: defectdojo-db
+    environment:
+      - POSTGRES_DB=defectdojo
+      - POSTGRES_USER=defectdojo
+      - POSTGRES_PASSWORD=${DD_DB_PASSWORD:-defectdojo123}
+    volumes:
+      - dd-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  defectdojo-redis:
+    image: redis:7-alpine
+    container_name: defectdojo-redis
+    restart: unless-stopped
+
+  defectdojo:
+    image: defectdojo/defectdojo-django:latest
+    container_name: defectdojo
+    ports:
+      - "8080:8081"
+    environment:
+      - DD_DATABASE_URL=postgresql://defectdojo:${DD_DB_PASSWORD:-defectdojo123}@defectdojo-db:5432/defectdojo
+      - DD_CELERY_BROKER_URL=redis://defectdojo-redis:6379/0
+      - DD_SECRET_KEY=${DD_SECRET_KEY:-change-me-to-a-random-50-char-string}
+      - DD_CREDENTIAL_AES_256_KEY=${DD_AES_KEY:-change-me-to-a-random-32-char-string}
+      - DD_ADMIN_USER=admin
+      - DD_ADMIN_PASSWORD=${DD_ADMIN_PASSWORD:-admin123}
+      - DD_ADMIN_MAIL=admin@defectdojo.local
+      - DD_INITIALIZE=true
+      - DD_DEBUG=true
+      - DD_WHITENOISE=true
+    depends_on:
+      - defectdojo-db
+      - defectdojo-redis
+    volumes:
+      - dd-media:/app/media
+    restart: unless-stopped
+
+volumes:
+  es-data:
+  splunk-data:
+  dd-db-data:
+  dd-media:
+ 

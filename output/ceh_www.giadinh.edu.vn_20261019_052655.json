@@ -1,0 +1,415 @@
+{
+  "m02_footprinting": {
+    "whois": {
+      "error": "Whois command returned no output"
+    },
+    "dns": {
+      "A": [
+        "203.205.2.52"
+      ],
+      "AAAA": [],
+      "MX": [],
+      "NS": [],
+      "TXT": [],
+      "SOA": [],
+      "CNAME": []
+    },
+    "zone_transfer": {
+      "error": "Không lấy được NS"
+    },
+    "subdomains": {
+      "error": "Chưa cấu hình subdomain_wordlist"
+    }
+  },
+  "m03_scanning": {
+    "host_discovery": {
+      "output": "Starting Nmap 7.991 ( https://nmap.org ) at 2026-10-19 04:47 +0000\nNmap scan report for www.giadinh.edu.vn (203.205.2.52)\nHost is up (0.0062s latency).\nNmap done: 1 IP address (1 host up) scanned in 0.56 seconds\n"
+    },
+    "port_scan": {
+      "command": "nmap -Pn -T4 -sV -sC -O -p- www.giadinh.edu.vn",
+      "timeout": "unlimited",
+      "output": "Starting Nmap 7.991 ( https://nmap.org ) at 2026-10-19 04:47 +0000\nNmap scan report for www.giadinh.edu.vn (203.205.2.52)\nHost is up (0.0056s latency).\nNot shown: 65532 filtered tcp ports (no-response)\nPORT     STATE SERVICE       VERSION\n80/tcp   open  http          Apache httpd 2.4.6 ((CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33)\n|_http-title: Did not follow redirect to https://www.giadinh.edu.vn/\n|_http-server-header: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\n443/tcp  open  ssl/http      Apache httpd 2.4.6 ((CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33)\n|_ssl-date: TLS randomness does not represent time\n| ssl-cert: Subject: commonName=*.giadinh.edu.vn\n| Subject Alternative Name: DNS:*.giadinh.edu.vn, DNS:giadinh.edu.vn\n| Not valid before: 2022-02-14T00:00:00\n|_Not valid after:  2023-02-14T23:59:59\n| http-methods: \n|_  Potentially risky methods: TRACE\n|_http-server-header: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\n|_http-title: Apache HTTP Server Test Page powered by CentOS\n8443/tcp open  ssl/https-alt xxxx\n|_ssl-date: TLS randomness does not represent time\n|_http-server-header: xxxx\n| ssl-cert: Subject: commonName=Appliance_Certificate_1PUWaSekKMEgBEh/organizationName=NA/stateOrProvinceName=NA/countryName=NA\n| Not valid before: 2015-08-01T00:00:00\n|_Not valid after:  2036-12-31T23:59:59\n| fingerprint-strings: \n|   FourOhFourRequest, GetRequest, HTTPOptions: \n|     HTTP/1.1 400 Bad Request\n|     Date: Mon, 19 Oct 2026 05:21:54 GMT\n|     Server: xxxx\n|     X-Frame-Options: SAMEORIGIN\n|     Strict-Transport-Security: max-age=31536000\n|     X-Content-Type-Options: nosniff\n|     Referrer-Policy: strict-origin-when-cross-origin\n|     Content-Length: 266\n|     Connection: close\n|     Content-Type: text/html; charset=iso-8859-1\n|     <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n|     <html><head>\n|     <title>400 Bad Request</title>\n|     </head><body>\n|     <h1>Bad Request</h1>\n|     <p>Your browser sent a request that this server could not understand.<br />\n|     </p>\n|_    </body></html>\n|_http-title: VPN Portal\n1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :\nSF-Port8443-TCP:V=7.991%T=SSL%I=7%D=10/19%Time=6AD5A8F3%P=x86_64-pc-linux-\nSF:gnu%r(GetRequest,24B,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nDate:\\x20Mo\nSF:n,\\x2019\\x20Oct\\x202026\\x2005:21:54\\x20GMT\\r\\nServer:\\x20xxxx\\r\\nX-Fram\nSF:e-Options:\\x20SAMEORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=31536\nSF:000\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nReferrer-Policy:\\x20strict\nSF:-origin-when-cross-origin\\r\\nContent-Length:\\x20266\\r\\nConnection:\\x20c\nSF:lose\\r\\nContent-Type:\\x20text/html;\\x20charset=iso-8859-1\\r\\n\\r\\n<!DOCT\nSF:YPE\\x20HTML\\x20PUBLIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01//EN\\\"\\x20\\\"http\nSF:://www\\.w3\\.org/TR/html4/strict\\.dtd\\\">\\n<html><head>\\n<title>400\\x20Ba\nSF:d\\x20Request</title>\\n</head><body>\\n<h1>Bad\\x20Request</h1>\\n<p>Your\\x\nSF:20browser\\x20sent\\x20a\\x20request\\x20that\\x20this\\x20server\\x20could\\x2\nSF:0not\\x20understand\\.<br\\x20/>\\n</p>\\n</body></html>\\n\")%r(HTTPOptions,2\nSF:4B,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nDate:\\x20Mon,\\x2019\\x20Oct\\x2\nSF:02026\\x2005:21:54\\x20GMT\\r\\nServer:\\x20xxxx\\r\\nX-Frame-Options:\\x20SAME\nSF:ORIGIN\\r\\nStrict-Transport-Security:\\x20max-age=31536000\\r\\nX-Content-T\nSF:ype-Options:\\x20nosniff\\r\\nReferrer-Policy:\\x20strict-origin-when-cross\nSF:-origin\\r\\nContent-Length:\\x20266\\r\\nConnection:\\x20close\\r\\nContent-Ty\nSF:pe:\\x20text/html;\\x20charset=iso-8859-1\\r\\n\\r\\n<!DOCTYPE\\x20HTML\\x20PUB\nSF:LIC\\x20\\\"-//W3C//DTD\\x20HTML\\x204\\.01//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR\nSF:/html4/strict\\.dtd\\\">\\n<html><head>\\n<title>400\\x20Bad\\x20Request</titl\nSF:e>\\n</head><body>\\n<h1>Bad\\x20Request</h1>\\n<p>Your\\x20browser\\x20sent\\\nSF:x20a\\x20request\\x20that\\x20this\\x20server\\x20could\\x20not\\x20understand\nSF:\\.<br\\x20/>\\n</p>\\n</body></html>\\n\")%r(FourOhFourRequest,24B,\"HTTP/1\\.\nSF:1\\x20400\\x20Bad\\x20Request\\r\\nDate:\\x20Mon,\\x2019\\x20Oct\\x202026\\x2005:\nSF:21:54\\x20GMT\\r\\nServer:\\x20xxxx\\r\\nX-Frame-Options:\\x20SAMEORIGIN\\r\\nSt\nSF:rict-Transport-Security:\\x20max-age=31536000\\r\\nX-Content-Type-Options:\nSF:\\x20nosniff\\r\\nReferrer-Policy:\\x20strict-origin-when-cross-origin\\r\\nC\nSF:ontent-Length:\\x20266\\r\\nConnection:\\x20close\\r\\nContent-Type:\\x20text/\nSF:html;\\x20charset=iso-8859-1\\r\\n\\r\\n<!DOCTYPE\\x20HTML\\x20PUBLIC\\x20\\\"-//\nSF:W3C//DTD\\x20HTML\\x204\\.01//EN\\\"\\x20\\\"http://www\\.w3\\.org/TR/html4/stric\nSF:t\\.dtd\\\">\\n<html><head>\\n<title>400\\x20Bad\\x20Request</title>\\n</head><\nSF:body>\\n<h1>Bad\\x20Request</h1>\\n<p>Your\\x20browser\\x20sent\\x20a\\x20requ\nSF:est\\x20that\\x20this\\x20server\\x20could\\x20not\\x20understand\\.<br\\x20/>\\\nSF:n</p>\\n</body></html>\\n\");\nWarning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port\nDevice type: specialized\nRunning (JUST GUESSING): Google Fuchsia (85%)\nOS CPE: cpe:/o:google:fuchsia\nAggressive OS guesses: Google Fuchsia (85%)\nNo exact OS matches for host (test conditions non-ideal).\n\nOS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 2153.43 seconds\n"
+    },
+    "open_ports": [
+      {
+        "port": 80,
+        "proto": "tcp",
+        "service": "http",
+        "version": "Apache httpd 2.4.6 ((CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33)"
+      },
+      {
+        "port": 443,
+        "proto": "tcp",
+        "service": "ssl/http",
+        "version": "Apache httpd 2.4.6 ((CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33)"
+      },
+      {
+        "port": 8443,
+        "proto": "tcp",
+        "service": "ssl/https-alt",
+        "version": "xxxx"
+      }
+    ]
+  },
+  "m04_enumeration": {
+    "smb": {
+      "enum4linux": "Starting enum4linux v0.9.1 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Mon Oct 19 05:23:31 2026\n\n\u001b[34m =========================================( \u001b[0m\u001b[32mTarget Information\u001b[0m\u001b[34m )=========================================\n\n\u001b[0mTarget ........... www.giadinh.edu.vn\nRID Range ........ 500-550,1000-1050\nUsername ......... ''\nPassword ......... ''\nKnown Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none\n\n\n\u001b[34m =========================( \u001b[0m\u001b[32mEnumerating Workgroup/Domain on www.giadinh.edu.vn\u001b[0m\u001b[34m )=========================\n\n\u001b[0m\u001b[33m\n[E] \u001b[0m\u001b[31mCan't find workgroup/domain\n\n\u001b[0m\n\n\u001b[34m =============================( \u001b[0m\u001b[32mNbtstat Information for www.giadinh.edu.vn\u001b[0m\u001b[34m )=============================\n\n\u001b[0mLooking up status of 203.205.2.52\nNo reply from 203.205.2.52\n\n\u001b[34m ================================( \u001b[0m\u001b[32mSession Check on www.giadinh.edu.vn\u001b[0m\u001b[34m )================================\n\n\u001b[0m\u001b[33m\n[E] \u001b[0m\u001b[31mServer doesn't allow session using username '', password ''.  Aborting remainder of tests.\n\n\u001b[0m",
+      "smbclient_list": "\n[STDERR]\ndo_connect: Connection to www.giadinh.edu.vn failed (Error NT_STATUS_IO_TIMEOUT)\n"
+    },
+    "snmp": {
+      "walk_public": "\n[STDERR]\nCreated directory: /var/lib/snmp/cert_indexes\nTimeout: No Response from www.giadinh.edu.vn\n"
+    }
+  },
+  "m05_vuln_analysis": {
+    "searchsploit": {
+      "output": "{\n\t\"SEARCH\": \"www.giadinh.edu.vn\",\n\t\"DB_PATH_EXPLOIT\": \"/opt/exploitdb\",\n\t\"RESULTS_EXPLOIT\": [\t],\n\t\"DB_PATH_SHELLCODE\": \"/opt/exploitdb\",\n\t\"RESULTS_SHELLCODE\": [\t]\n}\n"
+    },
+    "sslscan": {
+      "output": "Version: \u001b[32m2.1.5\u001b[0m\nOpenSSL 3.6.4 25 Aug 2026\n\u001b[0m\n\u001b[32mConnected to 203.205.2.52\u001b[0m\n\nTesting SSL server \u001b[32mwww.giadinh.edu.vn\u001b[0m on port \u001b[32m443\u001b[0m using SNI name \u001b[32mwww.giadinh.edu.vn\u001b[0m\n\n  \u001b[1;34mSSL/TLS Protocols:\u001b[0m\nSSLv2     \u001b[32mdisabled\u001b[0m\nSSLv3     \u001b[32mdisabled\u001b[0m\nTLSv1.0   \u001b[33menabled\u001b[0m\nTLSv1.1   \u001b[33menabled\u001b[0m\nTLSv1.2   enabled\nTLSv1.3   \u001b[33mdisabled\u001b[0m\n\n  \u001b[1;34mTLS Fallback SCSV:\u001b[0m\nServer \u001b[32msupports\u001b[0m TLS Fallback SCSV\n\n  \u001b[1;34mTLS renegotiation:\u001b[0m\n\u001b[32mSecure\u001b[0m session renegotiation supported\n\n  \u001b[1;34mTLS Compression:\u001b[0m\nCompression \u001b[32mdisabled\u001b[0m\n\n  \u001b[1;34mHeartbleed:\u001b[0m\nTLSv1.2 \u001b[32mnot vulnerable\u001b[0m to heartbleed\nTLSv1.1 \u001b[32mnot vulnerable\u001b[0m to heartbleed\nTLSv1.0 \u001b[32mnot vulnerable\u001b[0m to heartbleed\n\n  \u001b[1;34mSupported Server Cipher(s):\u001b[0m\n\u001b[32mPreferred\u001b[0m TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-RSA-AES256-GCM-SHA384  \u001b[0m Curve P-256 DHE 256\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mDHE-RSA-AES256-GCM-SHA384    \u001b[0m DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  \u001b[32mECDHE-RSA-AES128-GCM-SHA256  \u001b[0m Curve P-256 DHE 256\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  \u001b[32mDHE-RSA-AES128-GCM-SHA256    \u001b[0m DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-RSA-AES256-SHA384       Curve P-256 DHE 256\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  DHE-RSA-AES256-SHA256         DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-RSA-AES128-SHA256       Curve P-256 DHE 256\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  DHE-RSA-AES128-SHA256         DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  DHE-RSA-AES256-SHA            DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  DHE-RSA-CAMELLIA256-SHA       DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  DHE-RSA-AES128-SHA            DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  DHE-RSA-CAMELLIA128-SHA       DHE 2048 bits\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  AES256-GCM-SHA384            \nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  AES128-GCM-SHA256            \nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  AES256-SHA256                \nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  AES128-SHA256                \nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  AES256-SHA                   \nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  CAMELLIA256-SHA              \nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  AES128-SHA                   \nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  CAMELLIA128-SHA              \nAccepted  TLSv1.2  \u001b[32m112\u001b[0m bits  \u001b[33mTLS_RSA_WITH_3DES_EDE_CBC_SHA\u001b[0m\nAccepted  TLSv1.2  \u001b[32m112\u001b[0m bits  \u001b[33mTLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA\u001b[0m\nAccepted  TLSv1.2  \u001b[32m112\u001b[0m bits  \u001b[33mTLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA\u001b[0m\n\u001b[32mPreferred\u001b[0m \u001b[33mTLSv1.1\u001b[0m  \u001b[32m256\u001b[0m bits  ECDHE-RSA-AES256-SHA          Curve P-256 DHE 256\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m256\u001b[0m bits  DHE-RSA-AES256-SHA            DHE 2048 bits\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m256\u001b[0m bits  DHE-RSA-CAMELLIA256-SHA       DHE 2048 bits\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m128\u001b[0m bits  ECDHE-RSA-AES128-SHA          Curve P-256 DHE 256\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m128\u001b[0m bits  DHE-RSA-AES128-SHA            DHE 2048 bits\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m128\u001b[0m bits  DHE-RSA-CAMELLIA128-SHA       DHE 2048 bits\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m256\u001b[0m bits  AES256-SHA                   \nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m256\u001b[0m bits  CAMELLIA256-SHA              \nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m128\u001b[0m bits  AES128-SHA                   \nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m128\u001b[0m bits  CAMELLIA128-SHA              \nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m112\u001b[0m bits  \u001b[33mTLS_RSA_WITH_3DES_EDE_CBC_SHA\u001b[0m\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m112\u001b[0m bits  \u001b[33mTLS_DHE_RSA_WITH_3DES_EDE_CBC_SHA\u001b[0m\nAccepted  \u001b[33mTLSv1.1\u001b[0m  \u001b[32m112\u001b[0m bits  \u001b[33mTLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA\u001b[0m\n\u001b[32mPreferred\u001b[0m \u001b[33mTLSv"
+    },
+    "nikto": {
+      "output": "- Nikto v2.6.1\n---------------------------------------------------------------------------\n+ Target IP:          203.205.2.52\n+ Target Hostname:    www.giadinh.edu.vn\n+ Target Port:        80\n+ Platform:           Unknown\n+ Start Time:         2026-10-19 05:24:25 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\n+ No CGI Directories found (use '-C all' to force check all possible dirs). CGI tests skipped.\n+ [600595] OpenSSL/1.0.2k-fips appears to be outdated (current is at least 4.0.1).\n+ [600625] PHP/7.3.33 appears to be outdated (current is at least 8.5.8).\n+ [600050] Apache/2.4.6 appears to be outdated (current is at least 2.4.68).\n+ [013587] /: Suggested security header missing: permissions-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy\n+ [013587] /: Suggested security header missing: content-security-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP\n+ [013587] /: Suggested security header missing: referrer-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy\n+ [013587] /: Suggested security header missing: strict-transport-security. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security\n+ [013587] /: Suggested security header missing: x-content-type-options. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options\n+ [999979] http://100.100.100.200/latest/meta-data/: IP address found in the 'location' header. The IP is \"100.100.100.200\". See: https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed\n+ [007342] /: X-Frame-Options header is deprecated and was replaced with the Content-Security-Policy HTTP header with the frame-ancestors directive. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options\n+ [007352] /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/\n+ 4443 requests: 0 errors and 11 items reported on the remote host\n+ End Time:           2026-10-19 05:24:59 (GMT0) (34 seconds)\n---------------------------------------------------------------------------\n+ 1 host(s) tested\n"
+    }
+  },
+  "m11_web_hacking": {
+    "whatweb": {
+      "output": "\u001b[1m\u001b[34mhttp://www.giadinh.edu.vn\u001b[0m [302 Found] \u001b[1mApache\u001b[0m[\u001b[1m\u001b[32m2.4.6\u001b[0m], \u001b[1mCountry\u001b[0m[\u001b[0m\u001b[22mVIET NAM\u001b[0m][\u001b[1m\u001b[31mVN\u001b[0m], \u001b[1mHTTPServer\u001b[0m[\u001b[1m\u001b[31mCentOS\u001b[0m][\u001b[1m\u001b[36mApache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\u001b[0m], \u001b[1mIP\u001b[0m[\u001b[0m\u001b[22m203.205.2.52\u001b[0m], \u001b[1mOpenSSL\u001b[0m[\u001b[1m\u001b[32m1.0.2k-fips\u001b[0m], \u001b[1mPHP\u001b[0m[\u001b[1m\u001b[32m7.3.33\u001b[0m], \u001b[1mRedirectLocation\u001b[0m[\u001b[0m\u001b[22mhttps://www.giadinh.edu.vn/\u001b[0m], \u001b[1mTitle\u001b[0m[\u001b[1m\u001b[33m302 Found\u001b[0m]\n\u001b[1m\u001b[34mhttps://www.giadinh.edu.vn/\u001b[0m [403 Forbidden] \u001b[1mApache\u001b[0m[\u001b[1m\u001b[32m2.4.6\u001b[0m], \u001b[1mBootstrap\u001b[0m, \u001b[1mCountry\u001b[0m[\u001b[0m\u001b[22mVIET NAM\u001b[0m][\u001b[1m\u001b[31mVN\u001b[0m], \u001b[1mEmail\u001b[0m[\u001b[0m\u001b[22mwebmaster@example.com\u001b[0m], \u001b[1mHTTPServer\u001b[0m[\u001b[1m\u001b[31mCentOS\u001b[0m][\u001b[1m\u001b[36mApache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\u001b[0m], \u001b[1mIP\u001b[0m[\u001b[0m\u001b[22m203.205.2.52\u001b[0m], \u001b[1mOpenSSL\u001b[0m[\u001b[1m\u001b[32m1.0.2k-fips\u001b[0m], \u001b[1mPHP\u001b[0m[\u001b[1m\u001b[32m7.3.33\u001b[0m], \u001b[1mPoweredBy\u001b[0m[\u001b[0m\u001b[22mApache,CentOS\u001b[0m], \u001b[1mTitle\u001b[0m[\u001b[1m\u001b[33mApache HTTP Server Test Page powered by CentOS\u001b[0m]\n"
+    },
+    "nikto": {
+      "output": "- Nikto v2.6.1\n---------------------------------------------------------------------------\n+ Target IP:          203.205.2.52\n+ Target Hostname:    www.giadinh.edu.vn\n+ Target Port:        80\n+ Platform:           Unknown\n+ Start Time:         2026-10-19 05:25:52 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33\n+ No CGI Directories found (use '-C all' to force check all possible dirs). CGI tests skipped.\n+ [600050] Apache/2.4.6 appears to be outdated (current is at least 2.4.68).\n+ [600595] OpenSSL/1.0.2k-fips appears to be outdated (current is at least 4.0.1).\n+ [600625] PHP/7.3.33 appears to be outdated (current is at least 8.5.8).\n+ [013587] /: Suggested security header missing: x-content-type-options. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options\n+ [013587] /: Suggested security header missing: referrer-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy\n+ [013587] /: Suggested security header missing: content-security-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP\n+ [013587] /: Suggested security header missing: permissions-policy. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy\n+ [013587] /: Suggested security header missing: strict-transport-security. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security\n+ [000777] /user.php?op=confirmnewuser&module=NS-NewUser&uNikto=%22%3E%3Cimg%20src=%22javascript:alert(document.cookie);%22%3E&email=test@test.com: Post Nuke 0.7.2.3-Phoenix is vulnerable to Cross Site Scripting (XSS).\n+ [999979] http://100.100.100.200/latest/meta-data/: IP address found in the 'location' header. The IP is \"100.100.100.200\". See: https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed\n+ [007342] /: X-Frame-Options header is deprecated and was replaced with the Content-Security-Policy HTTP header with the frame-ancestors directive. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options\n+ [007352] /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/web-vulnerability-scanner/vulnerabilities/missing-content-type-header/\n+ 8289 requests: 0 errors and 12 items reported on the remote host\n+ End Time:           2026-10-19 05:26:55 (GMT0) (63 seconds)\n---------------------------------------------------------------------------\n+ 1 host(s) tested\n"
+    },
+    "dirb": {
+      "output": "\n-----------------\nDIRB v2.22    \nBy The Dark Raver\n-----------------\n\nSTART_TIME: Mon Oct 19 05:26:55 2026\nURL_BASE: http://www.giadinh.edu.vn/\nWORDLIST_FILES: /usr/share/dirb/wordlists/common.txt\n\n-----------------\n\n*** Generating Wordlist...\n                                                                               \nGENERATED WORDS: 4612\n\n---- Scanning URL: http://www.giadinh.edu.vn/ ----\n*** Calculating NOT_FOUND code...\n(!) WARNING: NOT_FOUND[] not stable, unable to determine correct URLs {30X}.\n    (Try using FineTunning: '-f')\n                                                                               \n                                                                               \n-----------------\nEND_TIME: Mon Oct 19 05:26:55 2026\nDOWNLOADED: 0 - FOUND: 0\n"
+    }
+  },
+  "m06_system_hacking": {
+    "hydra": {
+      "http:80": "Hydra v9.7 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).\n\nHydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2026-10-19 05:26:55\n\n[STDERR]\n[ERROR] There is no service \"http\", most likely you mean one of the many web modules, e.g. http-get or http-form-post. Read it up!\n"
+    },
+    "hash_identify": {
+      "error": "Chưa cấu hình hash_value"
+    }
+  },
+  "_deduplicated_findings": [
+    {
+      "fingerprint": "a4a9c5c8b08cde8e",
+      "target": "www.giadinh.edu.vn",
+      "port": "",
+      "service": "",
+      "title": "+ [000777] /user.php?op=confirmnewuser&module=NS-NewUser&uNikto=%22%3E%3Cimg%20src=%22javascript:alert(document.cookie);%22%3E&email=test@test.com: Post Nuke 0.7.2.3-Phoenix is vulnerable to Cross Sit",
+      "description": "",
+      "severity": "medium",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "nikto"
+      ],
+      "references": "",
+      "remediation": ""
+    },
+    {
+      "fingerprint": "e49ba570572e8fd2",
+      "target": "www.giadinh.edu.vn",
+      "port": "",
+      "service": "",
+      "title": "+ [007352] /: The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type. See: https://www.netsparker.com/w",
+      "description": "",
+      "severity": "low",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "nikto"
+      ],
+      "references": [],
+      "remediation": "",
+      "_cross_tool_hits": [
+        {
+          "tool": "nikto",
+          "severity": "low"
+        }
+      ]
+    },
+    {
+      "fingerprint": "e019643c72a8c6ea",
+      "target": "www.giadinh.edu.vn",
+      "port": "",
+      "service": "",
+      "title": "TLSv1.2 \u001b[32mnot vulnerable\u001b[0m to heartbleed",
+      "description": "",
+      "severity": "low",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "sslscan"
+      ],
+      "references": "",
+      "remediation": ""
+    },
+    {
+      "fingerprint": "83a2e08991bcf098",
+      "target": "www.giadinh.edu.vn",
+      "port": "",
+      "service": "",
+      "title": "TLSv1.1 \u001b[32mnot vulnerable\u001b[0m to heartbleed",
+      "description": "",
+      "severity": "low",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "sslscan"
+      ],
+      "references": "",
+      "remediation": ""
+    },
+    {
+      "fingerprint": "bf65dcfda4713b85",
+      "target": "www.giadinh.edu.vn",
+      "port": "",
+      "service": "",
+      "title": "TLSv1.0 \u001b[32mnot vulnerable\u001b[0m to heartbleed",
+      "description": "",
+      "severity": "low",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "sslscan"
+      ],
+      "references": "",
+      "remediation": ""
+    },
+    {
+      "fingerprint": "d983a9ef7394adec",
+      "target": "www.giadinh.edu.vn",
+      "port": 80,
+      "service": "http",
+      "title": "Open port 80/http",
+      "description": "",
+      "severity": "info",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "nmap"
+      ],
+      "references": "",
+      "remediation": ""
+    },
+    {
+      "fingerprint": "fe33a28f34211370",
+      "target": "www.giadinh.edu.vn",
+      "port": 443,
+      "service": "ssl/http",
+      "title": "Open port 443/ssl/http",
+      "description": "",
+      "severity": "info",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "nmap"
+      ],
+      "references": "",
+      "remediation": ""
+    },
+    {
+      "fingerprint": "c2b27f0cf7767af8",
+      "target": "www.giadinh.edu.vn",
+      "port": 8443,
+      "service": "ssl/https-alt",
+      "title": "Open port 8443/ssl/https-alt",
+      "description": "",
+      "severity": "info",
+      "cvss": "",
+      "cwe": "",
+      "cve": "",
+      "source_tools": [
+        "nmap"
+      ],
+      "references": "",
+      "remediation": ""
+    }
+  ],
+  "_compliance": {
+    "pci-dss": {
+      "name": "PCI-DSS v4.0",
+      "violations": 6,
+      "controls": {
+        "6.2.4": 1,
+        "11.3.2": 1,
+        "4.2.1": 5
+      }
+    },
+    "iso-27001": {
+      "name": "ISO/IEC 27001:2022",
+      "violations": 7,
+      "controls": {
+        "A.8.25": 1,
+        "A.8.26": 1,
+        "A.8.28": 1,
+        "A.8.24": 5,
+        "A.8.20": 3,
+        "A.8.21": 3,
+        "A.8.22": 3
+      }
+    },
+    "nist-csf": {
+      "name": "NIST CSF 2.0",
+      "violations": 7,
+      "controls": {
+        "ID.RA-01": 4,
+        "PR.PS-02": 4,
+        "PR.DS-02": 5,
+        "PR.PS-01": 3,
+        "PR.IR-01": 3
+      }
+    },
+    "soc2": {
+      "name": "SOC 2 Type II",
+      "violations": 7,
+      "controls": {
+        "CC4.1": 7,
+        "CC7.1": 7,
+        "CC6.7": 5
+      }
+    }
+  },
+  "_attack_graph_file": "output/attack_graph.html",
+  "_threat_intel": {
+    "ip": "203.205.2.52",
+    "virustotal": {
+      "error": "HTTP 404"
+    },
+    "shodan": {
+      "cpes": [],
+      "hostnames": [
+        "static.cmcti.vn"
+      ],
+      "ip": "203.205.2.52",
+      "ports": [
+        8443
+      ],
+      "tags": [],
+      "vulns": []
+    },
+    "abuseipdb": {
+      "error": "HTTP 401"
+    },
+    "greynoise": {
+      "error": "HTTP 404"
+    },
+    "otx": {
+      "pulse_count": 0,
+      "tags": [],
+      "malware_families": []
+    },
+    "domain": "www.giadinh.edu.vn",
+    "resolved_ip": "203.205.2.52"
+  },
+  "_mitre_attack": {
+    "T1590.002": {
+      "name": "Gather Victim Network Info: DNS",
+      "sources": [
+        "m02_footprinting.dns"
+      ]
+    },
+    "T1018": {
+      "name": "Remote System Discovery",
+      "sources": [
+        "m03_scanning.host_discovery"
+      ]
+    },
+    "T1595.001": {
+      "name": "Active Scanning: Scanning IP Blocks",
+      "sources": [
+        "m03_scanning.host_discovery"
+      ]
+    },
+    "T1046": {
+      "name": "Network Service Discovery",
+      "sources": [
+        "m03_scanning.port_scan",
+        "m04_enumeration.snmp"
+      ]
+    },
+    "T1595.002": {
+      "name": "Active Scanning: Vulnerability Scanning",
+      "sources": [
+        "m03_scanning.port_scan",
+        "m05_vuln_analysis.sslscan",
+        "m05_vuln_analysis.nikto",
+        "m11_web_hacking.nikto"
+      ]
+    },
+    "T1087.002": {
+      "name": "Account Discovery: Domain Account",
+      "sources": [
+        "m04_enumeration.smb"
+      ]
+    },
+    "T1135": {
+      "name": "Network Share Discovery",
+      "sources": [
+        "m04_enumeration.smb"
+      ]
+    },
+    "T1087.001": {
+      "name": "Account Discovery: Local Account",
+      "sources": [
+        "m04_enumeration.snmp"
+      ]
+    },
+    "T1596.005": {
+      "name": "Search Open Technical Databases: Scan Databases",
+      "sources": [
+        "m05_vuln_analysis.searchsploit"
+      ]
+    },
+    "T1588.006": {
+      "name": "Obtain Capabilities: Vulnerabilities",
+      "sources": [
+        "m05_vuln_analysis.searchsploit"
+      ]
+    },
+    "T1592.002": {
+      "name": "Gather Victim Host Info: Software",
+      "sources": [
+        "m11_web_hacking.whatweb"
+      ]
+    },
+    "T1083": {
+      "name": "File and Directory Discovery",
+      "sources": [
+        "m11_web_hacking.dirb"
+      ]
+    },
+    "T1595.003": {
+      "name": "Active Scanning: Wordlist Scanning",
+      "sources": [
+        "m11_web_hacking.dirb"
+      ]
+    },
+    "T1110.001": {
+      "name": "Brute Force: Password Guessing",
+      "sources": [
+        "m06_system_hacking.hydra"
+      ]
+    },
+    "T1110.003": {
+      "name": "Brute Force: Password Spraying",
+      "sources": [
+        "m06_system_hacking.hydra"
+      ]
+    },
+    "T1110.004": {
+      "name": "Brute Force: Credential Stuffing",
+      "sources": [
+        "m06_system_hacking.hydra"
+      ]
+    }
+  }
+}

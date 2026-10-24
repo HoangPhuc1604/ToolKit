@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Attack Graph</title>
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<style>body{margin:0;background:#0f1115;color:#e5e9f0;font-family:monospace}
+#net{width:100vw;height:100vh}#legend{position:fixed;top:12px;right:12px;
+background:#181b22;padding:12px;border-radius:8px;font-size:12px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;
+margin-right:6px}</style></head>
+<body>
+<div id="net"></div>
+<div id="legend">
+<b>Legend</b><br>
+<div><span class="dot" style="background:#4a9eff"></span>Host</div>
+<div><span class="dot" style="background:#ff9800"></span>Service</div>
+<div><span class="dot" style="background:#f44336"></span>Vulnerability</div>
+</div>
+<script>
+const nodes = new vis.DataSet([{"id": "www.giadinh.edu.vn", "label": "www.giadinh.edu.vn", "title": "{\n  \"type\": \"host\",\n  \"label\": \"www.giadinh.edu.vn\",\n  \"severity\": \"medium\"\n}", "group": "host", "color": "#4a9eff"}, {"id": "www.giadinh.edu.vn:80", "label": "80/http", "title": "{\n  \"type\": \"service\",\n  \"label\": \"80/http\",\n  \"port\": 80,\n  \"service\": \"http\",\n  \"version\": \"Apache httpd 2.4.6 ((CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33)\"\n}", "group": "service", "color": "#ff9800"}, {"id": "www.giadinh.edu.vn:443", "label": "443/ssl/http", "title": "{\n  \"type\": \"service\",\n  \"label\": \"443/ssl/http\",\n  \"port\": 443,\n  \"service\": \"ssl/http\",\n  \"version\": \"Apache httpd 2.4.6 ((CentOS) OpenSSL/1.0.2k-fips PHP/7.3.33)\"\n}", "group": "service", "color": "#ff9800"}, {"id": "www.giadinh.edu.vn:8443", "label": "8443/ssl/https-alt", "title": "{\n  \"type\": \"service\",\n  \"label\": \"8443/ssl/https-alt\",\n  \"port\": 8443,\n  \"service\": \"ssl/https-alt\",\n  \"version\": \"xxxx\"\n}", "group": "service", "color": "#ff9800"}, {"id": "vuln:a4a9c5c8b08cde8e", "label": "+ [000777] /user.php?op=confirmnewuser&m", "title": "{\n  \"type\": \"vuln\",\n  \"label\": \"+ [000777] /user.php?op=confirmnewuser&m\",\n  \"severity\": \"medium\",\n  \"cve\": \"\"\n}", "group": "vuln", "color": "#f44336"}, {"id": "vuln:e49ba570572e8fd2", "label": "+ [007352] /: The X-Content-Type-Options", "title": "{\n  \"type\": \"vuln\",\n  \"label\": \"+ [007352] /: The X-Content-Type-Options\",\n  \"severity\": \"low\",\n  \"cve\": \"\"\n}", "group": "vuln", "color": "#f44336"}]);
+const edges = new vis.DataSet([{"from": "www.giadinh.edu.vn", "to": "www.giadinh.edu.vn:80", "label": "runs", "arrows": "to"}, {"from": "www.giadinh.edu.vn", "to": "www.giadinh.edu.vn:443", "label": "runs", "arrows": "to"}, {"from": "www.giadinh.edu.vn", "to": "www.giadinh.edu.vn:8443", "label": "runs", "arrows": "to"}]);
+new vis.Network(document.getElementById('net'),
+  {nodes, edges},
+  {physics:{stabilization:true, barnesHut:{gravitationalConstant:-8000}},
+    interaction:{hover:true}, nodes:{shape:'dot', size:18, font:{color:'#e5e9f0'}}});
+</script></body></html>

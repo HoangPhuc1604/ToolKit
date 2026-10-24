@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="UTF-8">
+<title>CEH Toolkit Report - www.kvbcao.com</title>
+<style>
+  body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f5f7fa;color:#222}
+  header{background:linear-gradient(135deg,#1e3c72,#2a5298);color:#fff;padding:30px;text-align:center}
+  .container{max-width:1200px;margin:20px auto;padding:0 20px}
+  .module{background:#fff;border-radius:10px;padding:20px;margin:20px 0;
+          box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .module h2{margin-top:0;color:#1e3c72;border-bottom:2px solid #eee;padding-bottom:8px}
+  pre{background:#1e1e1e;color:#d4d4d4;padding:15px;border-radius:6px;overflow-x:auto;
+      font-size:12px;max-height:500px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;
+         background:#e3f2fd;color:#1565c0;font-size:12px;margin-left:8px}
+  .meta{color:#666;font-size:13px;text-align:center;margin-top:8px}
+</style></head>
+<body>
+<header>
+  <h1>CEH v13 Toolkit Report</h1>
+  <div class="meta">Target: <b>www.kvbcao.com</b> | 2026-10-20 13:38:40</div>
+</header>
+<div class="container">
+
+  <div class="module">
+    
+      <h2>m02_footprinting <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "dns": {
+    "A": [
+      "136.69.112.147"
+    ],
+    "AAAA": [],
+    "CNAME": [],
+    "MX": [],
+    "NS": [],
+    "SOA": [],
+    "TXT": []
+  },
+  "subdomains": {
+    "error": "Ch\u01b0a c\u1ea5u h\u00ecnh subdomain_wordlist"
+  },
+  "whois": {
+    "country": "US",
+    "creation_date": "[datetime.datetime(2026, 10, 14, 11, 26, 20, tzinfo=tzoffset(\u0027UTC\u0027, 0)), datetime.datetime(2026, 10, 14, 6, 26, 20, tzinfo=tzoffset(\u0027UTC\u0027, 0))]",
+    "emails": [
+      "abuse@godaddy.com"
+    ],
+    "expiration_date": "[datetime.datetime(2027, 10, 14, 11, 26, 20, tzinfo=tzoffset(\u0027UTC\u0027, 0)), datetime.datetime(2027, 10, 14, 6, 26, 20, tzinfo=tzoffset(\u0027UTC\u0027, 0))]",
+    "name_servers": [
+      "OLIVIA.NS.CLOUDFLARE.COM",
+      "TADEO.NS.CLOUDFLARE.COM"
+    ],
+    "org": "Domains By Proxy, LLC",
+    "registrar": "GoDaddy.com, LLC"
+  },
+  "zone_transfer": {
+    "error": "Kh\u00f4ng l\u1ea5y \u0111\u01b0\u1ee3c NS"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>m03_scanning <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "host_discovery": {
+    "output": "Starting Nmap 7.991 ( https://nmap.org ) at 2026-10-20 13:36 +0000\nNmap scan report for www.kvbcao.com (136.69.112.147)\nHost is up (0.00072s latency).\nNmap done: 1 IP address (1 host up) scanned in 0.57 seconds\n"
+  },
+  "open_ports": [
+    {
+      "port": 80,
+      "proto": "tcp",
+      "service": "ssl/http",
+      "version": "nginx"
+    },
+    {
+      "port": 443,
+      "proto": "tcp",
+      "service": "ssl/http",
+      "version": "OpenResty web app server 1.31.1.1"
+    }
+  ],
+  "port_scan": {
+    "command": "nmap -Pn -T4 -sV -sC -p 1-1000 www.kvbcao.com",
+    "output": "Starting Nmap 7.991 ( https://nmap.org ) at 2026-10-20 13:36 +0000\nNmap scan report for www.kvbcao.com (136.69.112.147)\nHost is up (0.034s latency).\nNot shown: 998 filtered tcp ports (no-response)\nPORT    STATE SERVICE  VERSION\n80/tcp  open  ssl/http nginx\n| ssl-cert: Subject: commonName=kvbcao.com\n| Subject Alternative Name: DNS:kvbcao.com, DNS:*.kvbcao.com\n| Not valid before: 2026-10-15T00:00:00\n|_Not valid after:  2027-01-13T23:59:59\n|_http-server-header: openresty/1.31.1.1\n|_http-title: KVB TRADE\n443/tcp open  ssl/http OpenResty web app server 1.31.1.1\n|_http-server-header: openresty/1.31.1.1\n| ssl-cert: Subject: commonName=kvbcao.com\n| Subject Alternative Name: DNS:kvbcao.com, DNS:*.kvbcao.com\n| Not valid before: 2026-10-15T00:00:00\n|_Not valid after:  2027-01-13T23:59:59\n|_http-title: KVB TRADE\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 46.36 seconds\n",
+    "timeout": "300s"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>m04_enumeration <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "smb": {
+    "enum4linux": "Starting enum4linux v0.9.1 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Tue Oct 20 13:37:30 2026\n\n\u001b[34m =========================================( \u001b[0m\u001b[32mTarget Information\u001b[0m\u001b[34m )=========================================\n\n\u001b[0mTarget ........... www.kvbcao.com\nRID Range ........ 500-550,1000-1050\nUsername ......... \u0027\u0027\nPassword ......... \u0027\u0027\nKnown Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none\n\n\n\u001b[34m ===========================( \u001b[0m\u001b[32mEnumerating Workgroup/Domain on www.kvbcao.com\u001b[0m\u001b[34m )===========================\n\n\u001b[0m\u001b[33m\n[E] \u001b[0m\u001b[31mCan\u0027t find workgroup/domain\n\n\u001b[0m\n\n\u001b[34m ===============================( \u001b[0m\u001b[32mNbtstat Information for www.kvbcao.com\u001b[0m\u001b[34m )===============================\n\n\u001b[0mLooking up status of 136.69.112.147\nNo reply from 136.69.112.147\n\n\u001b[34m ==================================( \u001b[0m\u001b[32mSession Check on www.kvbcao.com\u001b[0m\u001b[34m )==================================\n\n\u001b[0m\u001b[33m\n[E] \u001b[0m\u001b[31mServer doesn\u0027t allow session using username \u0027\u0027, password \u0027\u0027.  Aborting remainder of tests.\n\n\u001b[0m",
+    "smbclient_list": "\n[STDERR]\ndo_connect: Connection to www.kvbcao.com failed (Error NT_STATUS_IO_TIMEOUT)\n"
+  },
+  "snmp": {
+    "walk_public": "\n[STDERR]\nTimeout: No Response from www.kvbcao.com\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>m05_vuln_analysis <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "searchsploit": {
+    "output": "{\n\t\"SEARCH\": \"www.kvbcao.com\",\n\t\"DB_PATH_EXPLOIT\": \"/opt/exploitdb\",\n\t\"RESULTS_EXPLOIT\": [\t],\n\t\"DB_PATH_SHELLCODE\": \"/opt/exploitdb\",\n\t\"RESULTS_SHELLCODE\": [\t]\n}\n"
+  },
+  "sslscan": {
+    "output": "Version: \u001b[32m2.1.5\u001b[0m\nOpenSSL 3.6.4 25 Aug 2026\n\u001b[0m\n\u001b[32mConnected to 136.69.112.147\u001b[0m\n\nTesting SSL server \u001b[32mwww.kvbcao.com\u001b[0m on port \u001b[32m443\u001b[0m using SNI name \u001b[32mwww.kvbcao.com\u001b[0m\n\n  \u001b[1;34mSSL/TLS Protocols:\u001b[0m\nSSLv2     \u001b[32mdisabled\u001b[0m\nSSLv3     \u001b[32mdisabled\u001b[0m\nTLSv1.0   \u001b[32mdisabled\u001b[0m\nTLSv1.1   \u001b[32mdisabled\u001b[0m\nTLSv1.2   enabled\nTLSv1.3   \u001b[32menabled\u001b[0m\n\n  \u001b[1;34mTLS Fallback SCSV:\u001b[0m\nServer \u001b[32msupports\u001b[0m TLS Fallback SCSV\n\n  \u001b[1;34mTLS renegotiation:\u001b[0m\nSession renegotiation \u001b[32mnot supported\u001b[0m\n\n  \u001b[1;34mTLS Compression:\u001b[0m\nCompression \u001b[32mdisabled\u001b[0m\n\n  \u001b[1;34mHeartbleed:\u001b[0m\nTLSv1.3 \u001b[32mnot vulnerable\u001b[0m to heartbleed\nTLSv1.2 \u001b[32mnot vulnerable\u001b[0m to heartbleed\n\n  \u001b[1;34mSupported Server Cipher(s):\u001b[0m\n\u001b[32mPreferred\u001b[0m \u001b[32mTLSv1.3\u001b[0m  \u001b[32m128\u001b[0m bits  \u001b[32mTLS_AES_128_GCM_SHA256       \u001b[0m\nAccepted  \u001b[32mTLSv1.3\u001b[0m  \u001b[32m256\u001b[0m bits  \u001b[32mTLS_AES_256_GCM_SHA384       \u001b[0m\nAccepted  \u001b[32mTLSv1.3\u001b[0m  \u001b[32m256\u001b[0m bits  \u001b[32mTLS_CHACHA20_POLY1305_SHA256 \u001b[0m\n\u001b[32mPreferred\u001b[0m TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-ECDSA-AES256-GCM-SHA384\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-ECDSA-CHACHA20-POLY1305\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-ECDSA-AES256-CCM        Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  \u001b[32mECDHE-ECDSA-ARIA256-GCM-SHA384\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  \u001b[32mECDHE-ECDSA-AES128-GCM-SHA256\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-ECDSA-AES128-CCM        Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  \u001b[32mECDHE-ECDSA-ARIA128-GCM-SHA256\u001b[0m Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-ECDSA-AES256-SHA384     Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-ECDSA-CAMELLIA256-SHA384 Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-ECDSA-AES128-SHA256     Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-ECDSA-CAMELLIA128-SHA256 Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m256\u001b[0m bits  ECDHE-ECDSA-AES256-SHA        Curve \u001b[32m25519\u001b[0m DHE 253\nAccepted  TLSv1.2  \u001b[32m128\u001b[0m bits  ECDHE-ECDSA-AES128-SHA        Curve \u001b[32m25519\u001b[0m DHE 253\n\n  \u001b[1;34mServer Key Exchange Group(s):\u001b[0m\nTLSv1.3  \u001b[32m128\u001b[0m bits  secp256r1 (NIST P-256)\u001b[0m\nTLSv1.3  \u001b[32m192\u001b[0m bits  secp384r1 (NIST P-384)\u001b[0m\nTLSv1.3  \u001b[32m260\u001b[0m bits  secp521r1 (NIST P-521)\u001b[0m\nTLSv1.3  \u001b[32m128\u001b[0m bits  \u001b[32mx25519\u001b[0m\nTLSv1.3  \u001b[32m224\u001b[0m bits  \u001b[32mx448\u001b[0m\nTLSv1.3  \u001b[32m112\u001b[0m bits  ffdhe2048\u001b[0m\nTLSv1.3  \u001b[32m128\u001b[0m bits  ffdhe3072\u001b[0m\nTLSv1.2  \u001b[32m128\u001b[0m bits  secp256r1 (NIST P-256)\u001b[0m\n    Unable to parse certificate\n    Unable to parse certificate\n    Unable to parse certificate\n    Unable to parse certificate\nCertificate information cannot be retrieved.\n\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>m11_web_hacking <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "dirb": {
+    "output": "\n-----------------\nDIRB v2.22    \nBy The Dark Raver\n-----------------\n\nSTART_TIME: Tue Oct 20 13:38:39 2026\nURL_BASE: http://www.kvbcao.com/\nWORDLIST_FILES: /usr/share/dirb/wordlists/common.txt\n\n-----------------\n\n*** Generating Wordlist...\n                                                                               \nGENERATED WORDS: 4612\n\n---- Scanning URL: http://www.kvbcao.com/ ----\n*** Calculating NOT_FOUND code...\n                                                                               \n(!) FATAL: Too many errors connecting to host\n    (Possible cause: EMPTY REPLY FROM SERVER)\n                                                                               \n-----------------\nEND_TIME: Tue Oct 20 13:38:40 2026\nDOWNLOADED: 0 - FOUND: 0\n"
+  },
+  "nikto": {
+    "output": "- Nikto v2.6.1\n---------------------------------------------------------------------------\n+ [FAIL] Unable to connect to www.kvbcao.com:80.\n\n[STDERR]\nArgument \"Unable to connect to www.kvbcao.com:80\" isn\u0027t numeric in numeric ne (!=) at /var/lib/nikto/nikto.pl line 155.\n"
+  },
+  "whatweb": {
+    "output": "\n[STDERR]\n\u001b[1m\u001b[31mERROR Opening: http://www.kvbcao.com - end of file reached\u001b[0m\n"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>_deduplicated_findings <span class="badge">Analysis Results</span></h2>
+    
+    <pre>[
+  {
+    "cve": "",
+    "cvss": "",
+    "cwe": "",
+    "description": "",
+    "fingerprint": "051eeb5c2049b0e7",
+    "port": "",
+    "references": "",
+    "remediation": "",
+    "service": "",
+    "severity": "low",
+    "source_tools": [
+      "sslscan"
+    ],
+    "target": "www.kvbcao.com",
+    "title": "TLSv1.3 \u001b[32mnot vulnerable\u001b[0m to heartbleed"
+  },
+  {
+    "cve": "",
+    "cvss": "",
+    "cwe": "",
+    "description": "",
+    "fingerprint": "95b567ef4750f38b",
+    "port": "",
+    "references": "",
+    "remediation": "",
+    "service": "",
+    "severity": "low",
+    "source_tools": [
+      "sslscan"
+    ],
+    "target": "www.kvbcao.com",
+    "title": "TLSv1.2 \u001b[32mnot vulnerable\u001b[0m to heartbleed"
+  },
+  {
+    "cve": "",
+    "cvss": "",
+    "cwe": "",
+    "description": "",
+    "fingerprint": "6c3842365c1e133a",
+    "port": 80,
+    "references": "",
+    "remediation": "",
+    "service": "ssl/http",
+    "severity": "info",
+    "source_tools": [
+      "nmap"
+    ],
+    "target": "www.kvbcao.com",
+    "title": "Open port 80/ssl/http"
+  },
+  {
+    "cve": "",
+    "cvss": "",
+    "cwe": "",
+    "description": "",
+    "fingerprint": "fb29e6a5c58e0b2d",
+    "port": 443,
+    "references": "",
+    "remediation": "",
+    "service": "ssl/http",
+    "severity": "info",
+    "source_tools": [
+      "nmap"
+    ],
+    "target": "www.kvbcao.com",
+    "title": "Open port 443/ssl/http"
+  }
+]</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>_compliance <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "iso-27001": {
+    "controls": {
+      "A.8.20": 2,
+      "A.8.21": 2,
+      "A.8.22": 2,
+      "A.8.24": 4
+    },
+    "name": "ISO/IEC 27001:2022",
+    "violations": 4
+  },
+  "nist-csf": {
+    "controls": {
+      "ID.RA-01": 2,
+      "PR.DS-02": 4,
+      "PR.IR-01": 2,
+      "PR.PS-01": 2,
+      "PR.PS-02": 2
+    },
+    "name": "NIST CSF 2.0",
+    "violations": 4
+  },
+  "pci-dss": {
+    "controls": {
+      "4.2.1": 4
+    },
+    "name": "PCI-DSS v4.0",
+    "violations": 4
+  },
+  "soc2": {
+    "controls": {
+      "CC4.1": 4,
+      "CC6.7": 4,
+      "CC7.1": 4
+    },
+    "name": "SOC 2 Type II",
+    "violations": 4
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>_threat_intel <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "abuseipdb": {
+    "error": "HTTP 401"
+  },
+  "domain": "www.kvbplus.com",
+  "greynoise": {
+    "error": "HTTP 404"
+  },
+  "ip": "104.18.8.217",
+  "otx": {
+    "malware_families": [],
+    "pulse_count": 0,
+    "tags": []
+  },
+  "resolved_ip": "104.18.8.217",
+  "shodan": {
+    "cpes": [
+      "cpe:/a:cloudflare:cloudflare"
+    ],
+    "hostnames": [],
+    "ip": "104.18.8.217",
+    "ports": [
+      80,
+      443,
+      2052,
+      2053,
+      2082,
+      2083,
+      2086,
+      2087,
+      2095,
+      2096,
+      8080,
+      8443,
+      8880
+    ],
+    "tags": [
+      "cdn"
+    ],
+    "vulns": []
+  },
+  "virustotal": {
+    "error": "HTTP 404"
+  }
+}</pre>
+  </div>
+
+  <div class="module">
+    
+      <h2>_mitre_attack <span class="badge">Module ??</span></h2>
+    
+    <pre>{
+  "T1018": {
+    "name": "Remote System Discovery",
+    "sources": [
+      "m03_scanning.host_discovery"
+    ]
+  },
+  "T1046": {
+    "name": "Network Service Discovery",
+    "sources": [
+      "m03_scanning.port_scan",
+      "m04_enumeration.snmp"
+    ]
+  },
+  "T1083": {
+    "name": "File and Directory Discovery",
+    "sources": [
+      "m11_web_hacking.dirb"
+    ]
+  },
+  "T1087.001": {
+    "name": "Account Discovery: Local Account",
+    "sources": [
+      "m04_enumeration.snmp"
+    ]
+  },
+  "T1087.002": {
+    "name": "Account Discovery: Domain Account",
+    "sources": [
+      "m04_enumeration.smb"
+    ]
+  },
+  "T1135": {
+    "name": "Network Share Discovery",
+    "sources": [
+      "m04_enumeration.smb"
+    ]
+  },
+  "T1588.006": {
+    "name": "Obtain Capabilities: Vulnerabilities",
+    "sources": [
+      "m05_vuln_analysis.searchsploit"
+    ]
+  },
+  "T1590.001": {
+    "name": "Gather Victim Network Info: Domain Properties",
+    "sources": [
+      "m02_footprinting.whois"
+    ]
+  },
+  "T1590.002": {
+    "name": "Gather Victim Network Info: DNS",
+    "sources": [
+      "m02_footprinting.dns"
+    ]
+  },
+  "T1592.002": {
+    "name": "Gather Victim Host Info: Software",
+    "sources": [
+      "m11_web_hacking.whatweb"
+    ]
+  },
+  "T1595.001": {
+    "name": "Active Scanning: Scanning IP Blocks",
+    "sources": [
+      "m03_scanning.host_discovery"
+    ]
+  },
+  "T1595.002": {
+    "name": "Active Scanning: Vulnerability Scanning",
+    "sources": [
+      "m03_scanning.port_scan",
+      "m05_vuln_analysis.sslscan",
+      "m11_web_hacking.nikto"
+    ]
+  },
+  "T1595.003": {
+    "name": "Active Scanning: Wordlist Scanning",
+    "sources": [
+      "m11_web_hacking.dirb"
+    ]
+  },
+  "T1596.002": {
+    "name": "Search Open Technical Databases: WHOIS",
+    "sources": [
+      "m02_footprinting.whois"
+    ]
+  },
+  "T1596.005": {
+    "name": "Search Open Technical Databases: Scan Databases",
+    "sources": [
+      "m05_vuln_analysis.searchsploit"
+    ]
+  }
+}</pre>
+  </div>
+
+</div>
+</body></html>

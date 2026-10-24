@@ -1,0 +1,1050 @@
+[INFO] 17/Oct/2026 10:15:36 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 10:15:36 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 10:15:36 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 10:15:36 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 10:15:36 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 10:15:36 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 10:15:36 - MobSF Basic Environment Check
+[ERROR] 17/Oct/2026 10:15:36 - Error during JADX installation
+Traceback (most recent call last):
+  File [35m"/usr/local/lib/python3.13/urllib/request.py"[0m, line [35m1331[0m, in [35mdo_open[0m
+    [31mh.request[0m[1;31m(req.get_method(), req.selector, req.data, headers,[0m
+    [31m~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+              [1;31mencode_chunked=req.has_header('Transfer-encoding'))[0m
+              [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/http/client.py"[0m, line [35m1386[0m, in [35mrequest[0m
+    [31mself._send_request[0m[1;31m(method, url, body, headers, encode_chunked)[0m
+    [31m~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/http/client.py"[0m, line [35m1432[0m, in [35m_send_request[0m
+    [31mself.endheaders[0m[1;31m(body, encode_chunked=encode_chunked)[0m
+    [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/http/client.py"[0m, line [35m1381[0m, in [35mendheaders[0m
+    [31mself._send_output[0m[1;31m(message_body, encode_chunked=encode_chunked)[0m
+    [31m~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/http/client.py"[0m, line [35m1141[0m, in [35m_send_output[0m
+    [31mself.send[0m[1;31m(msg)[0m
+    [31m~~~~~~~~~[0m[1;31m^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/http/client.py"[0m, line [35m1085[0m, in [35msend[0m
+    [31mself.connect[0m[1;31m()[0m
+    [31m~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/usr/local/lib/python3.13/http/client.py"[0m, line [35m1520[0m, in [35mconnect[0m
+    [31msuper().connect[0m[1;31m()[0m
+    [31m~~~~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/usr/local/lib/python3.13/http/client.py"[0m, line [35m1051[0m, in [35mconnect[0m
+    self.sock = [31mself._create_connection[0m[1;31m([0m
+                [31m~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^[0m
+        [1;31m(self.host,self.port), self.timeout, self.source_address)[0m
+        [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/socket.py"[0m, line [35m844[0m, in [35mcreate_connection[0m
+    for res in [31mgetaddrinfo[0m[1;31m(host, port, 0, SOCK_STREAM)[0m:
+               [31m~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/socket.py"[0m, line [35m983[0m, in [35mgetaddrinfo[0m
+    for res in [31m_socket.getaddrinfo[0m[1;31m(host, port, family, type, proto, flags)[0m:
+               [31m~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1;35msocket.gaierror[0m: [35m[Errno -5] No address associated with hostname[0m
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File [35m"/home/mobsf/Mobile-Security-Framework-MobSF/mobsf/MobSF/tools_download.py"[0m, line [35m150[0m, in [35minstall_jadx[0m
+    downloaded_size = download_file(url, tmp_zip_file.name)
+  File [35m"/home/mobsf/Mobile-Security-Framework-MobSF/mobsf/MobSF/tools_download.py"[0m, line [35m98[0m, in [35mdownload_file[0m
+    with [31mopener.open[0m[1;31m(req)[0m as response:
+         [31m~~~~~~~~~~~[0m[1;31m^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/urllib/request.py"[0m, line [35m489[0m, in [35mopen[0m
+    response = self._open(req, data)
+  File [35m"/usr/local/lib/python3.13/urllib/request.py"[0m, line [35m506[0m, in [35m_open[0m
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File [35m"/usr/local/lib/python3.13/urllib/request.py"[0m, line [35m466[0m, in [35m_call_chain[0m
+    result = func(*args)
+  File [35m"/usr/local/lib/python3.13/urllib/request.py"[0m, line [35m1379[0m, in [35mhttps_open[0m
+    return [31mself.do_open[0m[1;31m(http.client.HTTPSConnection, req,[0m
+           [31m~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+                        [1;31mcontext=self._context)[0m
+                        [1;31m^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/urllib/request.py"[0m, line [35m1334[0m, in [35mdo_open[0m
+    raise URLError(err)
+[1;35murllib.error.URLError[0m: [35m<urlopen error [Errno -5] No address associated with hostname>[0m
+[INFO] 17/Oct/2026 10:15:40 - Checking for Update.
+[INFO] 17/Oct/2026 10:15:40 - No updates available.
+[INFO] 17/Oct/2026 10:15:46 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 10:15:46 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 10:15:46 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 10:15:46 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 10:15:46 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 10:15:46 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 10:15:46 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 10:15:47 - Checking for Update.
+[INFO] 17/Oct/2026 10:15:47 - No updates available.
+[INFO] 17/Oct/2026 10:15:52 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 10:15:52 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 10:15:52 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 10:15:52 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 10:15:52 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 10:15:52 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 10:15:52 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 10:15:53 - Checking for Update.
+[INFO] 17/Oct/2026 10:15:53 - No updates available.
+[INFO] 17/Oct/2026 10:15:58 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 10:15:58 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 10:15:58 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 10:15:58 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 10:15:58 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 10:15:58 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 10:15:58 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 10:15:59 - Checking for Update.
+[INFO] 17/Oct/2026 10:15:59 - No updates available.
+[INFO] 17/Oct/2026 10:16:03 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 10:16:03 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 10:16:03 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 10:16:03 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 10:16:03 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 10:16:03 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 10:16:03 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 10:16:04 - Checking for Update.
+[INFO] 17/Oct/2026 10:16:04 - No updates available.
+[INFO] 17/Oct/2026 10:41:07 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 10:41:07 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 10:41:07 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 10:41:07 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 10:41:07 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 10:41:07 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 10:41:07 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 10:41:11 - Checking for Update.
+[INFO] 17/Oct/2026 10:41:12 - No updates available.
+[INFO] 17/Oct/2026 11:06:40 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 11:06:40 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 11:06:40 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 11:06:40 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 11:06:40 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 11:06:40 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 11:06:40 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 11:06:41 - Checking for Update.
+[INFO] 17/Oct/2026 11:06:41 - No updates available.
+[INFO] 17/Oct/2026 11:06:47 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 11:06:47 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 11:06:47 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 11:06:47 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 11:06:47 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 11:06:47 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 11:06:47 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 11:06:47 - Checking for Update.
+[INFO] 17/Oct/2026 11:06:47 - No updates available.
+[INFO] 17/Oct/2026 11:06:51 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 11:06:51 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 11:06:51 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 11:06:51 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 11:06:51 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 11:06:51 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 11:06:51 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 11:06:52 - Checking for Update.
+[INFO] 17/Oct/2026 11:06:52 - No updates available.
+[INFO] 17/Oct/2026 11:06:56 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 11:06:56 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 11:06:56 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 11:06:56 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 11:06:56 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 11:06:56 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 11:06:56 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 11:06:57 - Checking for Update.
+[ERROR] 17/Oct/2026 11:07:01 - Cannot Check for updates.
+Traceback (most recent call last):
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connection.py"[0m, line [35m239[0m, in [35m_new_conn[0m
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/util/connection.py"[0m, line [35m60[0m, in [35mcreate_connection[0m
+    for res in [31msocket.getaddrinfo[0m[1;31m(host, port, family, socket.SOCK_STREAM)[0m:
+               [31m~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/socket.py"[0m, line [35m983[0m, in [35mgetaddrinfo[0m
+    for res in [31m_socket.getaddrinfo[0m[1;31m(host, port, family, type, proto, flags)[0m:
+               [31m~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1;35msocket.gaierror[0m: [35m[Errno -5] No address associated with hostname[0m
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m793[0m, in [35murlopen[0m
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m494[0m, in [35m_make_request[0m
+    raise new_e
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m470[0m, in [35m_make_request[0m
+    [31mself._validate_conn[0m[1;31m(conn)[0m
+    [31m~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m1125[0m, in [35m_validate_conn[0m
+    [31mconn.connect[0m[1;31m()[0m
+    [31m~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connection.py"[0m, line [35m827[0m, in [35mconnect[0m
+    self.sock = sock = [31mself._new_conn[0m[1;31m()[0m
+                       [31m~~~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connection.py"[0m, line [35m246[0m, in [35m_new_conn[0m
+    raise NameResolutionError(self.host, self, e) from e
+[1;35murllib3.exceptions.NameResolutionError[0m: [35mHTTPSConnection(host='github.com', port=443): Failed to resolve 'github.com' ([Errno -5] No address associated with hostname)[0m
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/adapters.py"[0m, line [35m696[0m, in [35msend[0m
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m847[0m, in [35murlopen[0m
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/util/retry.py"[0m, line [35m555[0m, in [35mincrement[0m
+    [1;31mraise MaxRetryError(_pool, url, reason) from reason[0m  # type: ignore[arg-type]
+    [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1;35murllib3.exceptions.MaxRetryError[0m: [35mHTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /MobSF/Mobile-Security-Framework-MobSF/releases/latest (Caused by NameResolutionError("HTTPSConnection(host='github.com', port=443): Failed to resolve 'github.com' ([Errno -5] No address associated with hostname)"))[0m
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File [35m"/home/mobsf/Mobile-Security-Framework-MobSF/mobsf/MobSF/utils.py"[0m, line [35m160[0m, in [35mcheck_update[0m
+    response = requests.head(github_url, timeout=5,
+                             proxies=proxies, verify=verify)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/api.py"[0m, line [35m114[0m, in [35mhead[0m
+    return request("head", url, **kwargs)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/api.py"[0m, line [35m71[0m, in [35mrequest[0m
+    return [31msession.request[0m[1;31m(method=method, url=url, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/sessions.py"[0m, line [35m651[0m, in [35mrequest[0m
+    resp = self.send(prep, **send_kwargs)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/sessions.py"[0m, line [35m784[0m, in [35msend[0m
+    r = adapter.send(request, **kwargs)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/adapters.py"[0m, line [35m729[0m, in [35msend[0m
+    raise ConnectionError(e, request=request)
+[1;35mrequests.exceptions.ConnectionError[0m: [35mHTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /MobSF/Mobile-Security-Framework-MobSF/releases/latest (Caused by NameResolutionError("HTTPSConnection(host='github.com', port=443): Failed to resolve 'github.com' ([Errno -5] No address associated with hostname)"))[0m
+[INFO] 17/Oct/2026 11:07:05 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 17/Oct/2026 11:07:05 - Author: Ajin Abraham | opensecurity.in
+[INFO] 17/Oct/2026 11:07:05 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 17/Oct/2026 11:07:05 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 17/Oct/2026 11:07:05 - Python Version: 3.13.16
+[INFO] 17/Oct/2026 11:07:05 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 17/Oct/2026 11:07:05 - MobSF Basic Environment Check
+[INFO] 17/Oct/2026 11:07:06 - Checking for Update.
+[INFO] 17/Oct/2026 11:07:08 - No updates available.
+[INFO] 18/Oct/2026 14:54:45 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 14:54:45 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 14:54:45 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 14:54:45 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 14:54:45 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 14:54:45 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 14:54:45 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 14:54:45 - Checking for Update.
+[INFO] 18/Oct/2026 14:54:46 - No updates available.
+[INFO] 18/Oct/2026 14:54:50 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 14:54:50 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 14:54:50 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 14:54:50 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 14:54:50 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 14:54:50 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 14:54:50 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 14:54:50 - Checking for Update.
+[INFO] 18/Oct/2026 14:54:51 - No updates available.
+[INFO] 18/Oct/2026 14:54:55 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 14:54:55 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 14:54:55 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 14:54:55 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 14:54:55 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 14:54:55 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 14:54:55 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 14:54:55 - Checking for Update.
+[INFO] 18/Oct/2026 14:54:55 - No updates available.
+[INFO] 18/Oct/2026 14:54:59 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 14:54:59 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 14:54:59 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 14:54:59 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 14:54:59 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 14:54:59 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 14:54:59 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 14:54:59 - Checking for Update.
+[INFO] 18/Oct/2026 14:54:59 - No updates available.
+[INFO] 18/Oct/2026 14:55:02 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 14:55:02 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 14:55:02 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 14:55:02 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 14:55:02 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 14:55:02 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 14:55:02 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 14:55:03 - Checking for Update.
+[INFO] 18/Oct/2026 14:55:03 - No updates available.
+[INFO] 18/Oct/2026 15:19:56 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 15:19:56 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 15:19:56 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 15:19:56 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 15:19:56 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 15:19:56 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 15:19:56 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 15:19:56 - Checking for Update.
+[INFO] 18/Oct/2026 15:19:56 - No updates available.
+[INFO] 18/Oct/2026 15:20:01 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 15:20:01 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 15:20:01 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 15:20:01 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 15:20:01 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 15:20:01 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 15:20:01 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 15:20:01 - Checking for Update.
+[INFO] 18/Oct/2026 15:20:01 - No updates available.
+[INFO] 18/Oct/2026 15:20:05 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 15:20:05 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 15:20:05 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 15:20:05 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 15:20:05 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 15:20:05 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 15:20:05 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 15:20:05 - Checking for Update.
+[INFO] 18/Oct/2026 15:20:05 - No updates available.
+[INFO] 18/Oct/2026 15:20:09 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 15:20:09 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 15:20:09 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 15:20:09 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 15:20:09 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 15:20:09 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 15:20:09 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 15:20:09 - Checking for Update.
+[INFO] 18/Oct/2026 15:20:09 - No updates available.
+[INFO] 18/Oct/2026 15:20:13 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 15:20:13 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 15:20:13 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 15:20:13 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 15:20:13 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 15:20:13 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 15:20:13 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 15:20:13 - Checking for Update.
+[INFO] 18/Oct/2026 15:20:13 - No updates available.
+[INFO] 18/Oct/2026 16:13:11 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 16:13:11 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 16:13:11 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 16:13:11 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 16:13:11 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 16:13:11 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 16:13:11 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 16:13:11 - Checking for Update.
+[INFO] 18/Oct/2026 16:13:11 - No updates available.
+[INFO] 18/Oct/2026 16:13:15 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 16:13:15 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 16:13:15 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 16:13:15 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 16:13:15 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 16:13:15 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 16:13:15 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 16:13:15 - Checking for Update.
+[INFO] 18/Oct/2026 16:13:15 - No updates available.
+[INFO] 18/Oct/2026 16:13:20 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 16:13:20 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 16:13:20 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 16:13:20 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 16:13:20 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 16:13:20 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 16:13:20 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 16:13:20 - Checking for Update.
+[INFO] 18/Oct/2026 16:13:21 - No updates available.
+[INFO] 18/Oct/2026 16:13:25 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 16:13:25 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 16:13:25 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 16:13:25 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 16:13:25 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 16:13:25 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 16:13:25 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 16:13:25 - Checking for Update.
+[INFO] 18/Oct/2026 16:13:25 - No updates available.
+[INFO] 18/Oct/2026 16:13:29 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 18/Oct/2026 16:13:29 - Author: Ajin Abraham | opensecurity.in
+[INFO] 18/Oct/2026 16:13:29 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 18/Oct/2026 16:13:29 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 18/Oct/2026 16:13:29 - Python Version: 3.13.16
+[INFO] 18/Oct/2026 16:13:29 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 18/Oct/2026 16:13:29 - MobSF Basic Environment Check
+[INFO] 18/Oct/2026 16:13:29 - Checking for Update.
+[INFO] 18/Oct/2026 16:13:29 - No updates available.
+[INFO] 19/Oct/2026 00:01:49 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 00:01:49 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 00:01:49 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 00:01:49 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 00:01:49 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 00:01:49 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 00:01:49 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 00:01:50 - Checking for Update.
+[INFO] 19/Oct/2026 00:01:50 - No updates available.
+[INFO] 19/Oct/2026 00:01:54 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 00:01:54 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 00:01:54 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 00:01:54 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 00:01:54 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 00:01:54 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 00:01:54 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 00:01:55 - Checking for Update.
+[INFO] 19/Oct/2026 00:01:55 - No updates available.
+[INFO] 19/Oct/2026 00:01:58 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 00:01:58 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 00:01:58 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 00:01:58 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 00:01:58 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 00:01:58 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 00:01:58 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 00:01:58 - Checking for Update.
+[INFO] 19/Oct/2026 00:01:59 - No updates available.
+[INFO] 19/Oct/2026 00:02:03 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 00:02:03 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 00:02:03 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 00:02:03 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 00:02:03 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 00:02:03 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 00:02:03 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 00:02:04 - Checking for Update.
+[INFO] 19/Oct/2026 00:02:04 - No updates available.
+[INFO] 19/Oct/2026 00:02:09 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 00:02:09 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 00:02:09 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 00:02:09 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 00:02:09 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 00:02:09 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 00:02:09 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 00:02:09 - Checking for Update.
+[INFO] 19/Oct/2026 00:02:09 - No updates available.
+[INFO] 19/Oct/2026 09:55:42 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 09:55:42 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 09:55:42 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 09:55:42 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 09:55:42 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 09:55:42 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 09:55:42 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 09:55:42 - Checking for Update.
+[INFO] 19/Oct/2026 09:55:43 - No updates available.
+[INFO] 19/Oct/2026 09:55:54 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 09:55:55 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 09:55:55 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 09:55:55 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 09:55:55 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 09:55:55 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 09:55:55 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 09:55:55 - Checking for Update.
+[INFO] 19/Oct/2026 09:55:55 - No updates available.
+[INFO] 19/Oct/2026 09:56:03 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 09:56:03 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 09:56:03 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 09:56:03 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 09:56:03 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 09:56:03 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 09:56:03 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 09:56:04 - Checking for Update.
+[INFO] 19/Oct/2026 09:56:04 - No updates available.
+[INFO] 19/Oct/2026 09:56:11 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 09:56:11 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 09:56:11 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 09:56:11 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 09:56:11 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 09:56:11 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 09:56:11 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 09:56:11 - Checking for Update.
+[INFO] 19/Oct/2026 09:56:11 - No updates available.
+[INFO] 19/Oct/2026 09:56:15 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 19/Oct/2026 09:56:19 - Author: Ajin Abraham | opensecurity.in
+[INFO] 19/Oct/2026 09:56:19 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 19/Oct/2026 09:56:19 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 19/Oct/2026 09:56:19 - Python Version: 3.13.16
+[INFO] 19/Oct/2026 09:56:19 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 19/Oct/2026 09:56:19 - MobSF Basic Environment Check
+[INFO] 19/Oct/2026 09:56:20 - Checking for Update.
+[INFO] 19/Oct/2026 09:56:27 - No updates available.
+[INFO] 20/Oct/2026 11:51:06 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 20/Oct/2026 11:51:06 - Author: Ajin Abraham | opensecurity.in
+[INFO] 20/Oct/2026 11:51:06 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 20/Oct/2026 11:51:06 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 20/Oct/2026 11:51:06 - Python Version: 3.13.16
+[INFO] 20/Oct/2026 11:51:06 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 20/Oct/2026 11:51:06 - MobSF Basic Environment Check
+[INFO] 20/Oct/2026 11:51:07 - Checking for Update.
+[INFO] 20/Oct/2026 11:51:07 - No updates available.
+[INFO] 20/Oct/2026 11:51:15 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 20/Oct/2026 11:51:15 - Author: Ajin Abraham | opensecurity.in
+[INFO] 20/Oct/2026 11:51:15 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 20/Oct/2026 11:51:15 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 20/Oct/2026 11:51:15 - Python Version: 3.13.16
+[INFO] 20/Oct/2026 11:51:15 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 20/Oct/2026 11:51:15 - MobSF Basic Environment Check
+[INFO] 20/Oct/2026 11:51:15 - Checking for Update.
+[INFO] 20/Oct/2026 11:51:15 - No updates available.
+[INFO] 20/Oct/2026 11:51:20 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 20/Oct/2026 11:51:20 - Author: Ajin Abraham | opensecurity.in
+[INFO] 20/Oct/2026 11:51:20 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 20/Oct/2026 11:51:20 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 20/Oct/2026 11:51:20 - Python Version: 3.13.16
+[INFO] 20/Oct/2026 11:51:20 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 20/Oct/2026 11:51:20 - MobSF Basic Environment Check
+[INFO] 20/Oct/2026 11:51:20 - Checking for Update.
+[INFO] 20/Oct/2026 11:51:20 - No updates available.
+[INFO] 20/Oct/2026 11:51:28 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 20/Oct/2026 11:51:28 - Author: Ajin Abraham | opensecurity.in
+[INFO] 20/Oct/2026 11:51:28 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 20/Oct/2026 11:51:28 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 20/Oct/2026 11:51:28 - Python Version: 3.13.16
+[INFO] 20/Oct/2026 11:51:28 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 20/Oct/2026 11:51:28 - MobSF Basic Environment Check
+[INFO] 20/Oct/2026 11:51:29 - Checking for Update.
+[INFO] 20/Oct/2026 11:51:29 - No updates available.
+[INFO] 20/Oct/2026 11:51:38 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 20/Oct/2026 11:51:38 - Author: Ajin Abraham | opensecurity.in
+[INFO] 20/Oct/2026 11:51:38 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 20/Oct/2026 11:51:38 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 20/Oct/2026 11:51:38 - Python Version: 3.13.16
+[INFO] 20/Oct/2026 11:51:38 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 20/Oct/2026 11:51:38 - MobSF Basic Environment Check
+[INFO] 20/Oct/2026 11:51:38 - Checking for Update.
+[INFO] 20/Oct/2026 11:51:38 - No updates available.
+[INFO] 23/Oct/2026 06:23:59 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 23/Oct/2026 06:23:59 - Author: Ajin Abraham | opensecurity.in
+[INFO] 23/Oct/2026 06:23:59 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 23/Oct/2026 06:23:59 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 23/Oct/2026 06:23:59 - Python Version: 3.13.16
+[INFO] 23/Oct/2026 06:23:59 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 23/Oct/2026 06:23:59 - MobSF Basic Environment Check
+[INFO] 23/Oct/2026 06:24:14 - Checking for Update.
+[INFO] 23/Oct/2026 06:24:15 - No updates available.
+[INFO] 23/Oct/2026 06:24:19 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 23/Oct/2026 06:24:19 - Author: Ajin Abraham | opensecurity.in
+[INFO] 23/Oct/2026 06:24:19 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 23/Oct/2026 06:24:19 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 23/Oct/2026 06:24:19 - Python Version: 3.13.16
+[INFO] 23/Oct/2026 06:24:19 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 23/Oct/2026 06:24:19 - MobSF Basic Environment Check
+[WARNING] 23/Oct/2026 06:24:44 - Internet Not Available. Skipping Update check
+[INFO] 23/Oct/2026 06:24:48 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 23/Oct/2026 06:24:48 - Author: Ajin Abraham | opensecurity.in
+[INFO] 23/Oct/2026 06:24:48 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 23/Oct/2026 06:24:48 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 23/Oct/2026 06:24:48 - Python Version: 3.13.16
+[INFO] 23/Oct/2026 06:24:48 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 23/Oct/2026 06:24:48 - MobSF Basic Environment Check
+[INFO] 23/Oct/2026 06:24:48 - Checking for Update.
+[INFO] 23/Oct/2026 06:24:49 - No updates available.
+[INFO] 23/Oct/2026 06:24:53 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 23/Oct/2026 06:24:53 - Author: Ajin Abraham | opensecurity.in
+[INFO] 23/Oct/2026 06:24:53 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 23/Oct/2026 06:24:53 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 23/Oct/2026 06:24:53 - Python Version: 3.13.16
+[INFO] 23/Oct/2026 06:24:53 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 23/Oct/2026 06:24:53 - MobSF Basic Environment Check
+[INFO] 23/Oct/2026 06:25:00 - Checking for Update.
+[INFO] 23/Oct/2026 06:25:02 - No updates available.
+[INFO] 23/Oct/2026 06:25:06 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 23/Oct/2026 06:25:06 - Author: Ajin Abraham | opensecurity.in
+[INFO] 23/Oct/2026 06:25:06 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 23/Oct/2026 06:25:06 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 23/Oct/2026 06:25:06 - Python Version: 3.13.16
+[INFO] 23/Oct/2026 06:25:06 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 23/Oct/2026 06:25:06 - MobSF Basic Environment Check
+[INFO] 23/Oct/2026 06:25:07 - Checking for Update.
+[ERROR] 23/Oct/2026 06:25:12 - Cannot Check for updates.
+Traceback (most recent call last):
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connection.py"[0m, line [35m239[0m, in [35m_new_conn[0m
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/util/connection.py"[0m, line [35m85[0m, in [35mcreate_connection[0m
+    raise err
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/util/connection.py"[0m, line [35m73[0m, in [35mcreate_connection[0m
+    [31msock.connect[0m[1;31m(sa)[0m
+    [31m~~~~~~~~~~~~[0m[1;31m^^^^[0m
+[1;35mTimeoutError[0m: [35mtimed out[0m
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m793[0m, in [35murlopen[0m
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m494[0m, in [35m_make_request[0m
+    raise new_e
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m470[0m, in [35m_make_request[0m
+    [31mself._validate_conn[0m[1;31m(conn)[0m
+    [31m~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m1125[0m, in [35m_validate_conn[0m
+    [31mconn.connect[0m[1;31m()[0m
+    [31m~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connection.py"[0m, line [35m827[0m, in [35mconnect[0m
+    self.sock = sock = [31mself._new_conn[0m[1;31m()[0m
+                       [31m~~~~~~~~~~~~~~[0m[1;31m^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connection.py"[0m, line [35m248[0m, in [35m_new_conn[0m
+    raise ConnectTimeoutError(
+    ...<2 lines>...
+    ) from e
+[1;35murllib3.exceptions.ConnectTimeoutError[0m: [35m(<HTTPSConnection(host='github.com', port=443) at 0x7e734e4c34d0>, 'Connection to github.com timed out. (connect timeout=5)')[0m
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/adapters.py"[0m, line [35m696[0m, in [35msend[0m
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/connectionpool.py"[0m, line [35m847[0m, in [35murlopen[0m
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File [35m"/usr/local/lib/python3.13/site-packages/urllib3/util/retry.py"[0m, line [35m555[0m, in [35mincrement[0m
+    [1;31mraise MaxRetryError(_pool, url, reason) from reason[0m  # type: ignore[arg-type]
+    [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1;35murllib3.exceptions.MaxRetryError[0m: [35mHTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /MobSF/Mobile-Security-Framework-MobSF/releases/latest (Caused by ConnectTimeoutError(<HTTPSConnection(host='github.com', port=443) at 0x7e734e4c34d0>, 'Connection to github.com timed out. (connect timeout=5)'))[0m
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File [35m"/home/mobsf/Mobile-Security-Framework-MobSF/mobsf/MobSF/utils.py"[0m, line [35m160[0m, in [35mcheck_update[0m
+    response = requests.head(github_url, timeout=5,
+                             proxies=proxies, verify=verify)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/api.py"[0m, line [35m114[0m, in [35mhead[0m
+    return request("head", url, **kwargs)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/api.py"[0m, line [35m71[0m, in [35mrequest[0m
+    return [31msession.request[0m[1;31m(method=method, url=url, **kwargs)[0m
+           [31m~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/sessions.py"[0m, line [35m651[0m, in [35mrequest[0m
+    resp = self.send(prep, **send_kwargs)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/sessions.py"[0m, line [35m784[0m, in [35msend[0m
+    r = adapter.send(request, **kwargs)
+  File [35m"/usr/local/lib/python3.13/site-packages/requests/adapters.py"[0m, line [35m717[0m, in [35msend[0m
+    raise ConnectTimeout(e, request=request)
+[1;35mrequests.exceptions.ConnectTimeout[0m: [35mHTTPSConnectionPool(host='github.com', port=443): Max retries exceeded with url: /MobSF/Mobile-Security-Framework-MobSF/releases/latest (Caused by ConnectTimeoutError(<HTTPSConnection(host='github.com', port=443) at 0x7e734e4c34d0>, 'Connection to github.com timed out. (connect timeout=5)'))[0m
+[INFO] 24/Oct/2026 10:14:54 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:14:54 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:14:54 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:14:54 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:14:54 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:14:54 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:14:54 - MobSF Basic Environment Check
+[WARNING] 24/Oct/2026 10:15:02 - Internet Not Available. Skipping Update check
+[INFO] 24/Oct/2026 10:15:05 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:15:05 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:15:05 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:15:05 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:15:05 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:15:05 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:15:05 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:15:06 - Checking for Update.
+[INFO] 24/Oct/2026 10:15:06 - No updates available.
+[INFO] 24/Oct/2026 10:15:09 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:15:09 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:15:09 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:15:09 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:15:09 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:15:09 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:15:09 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:15:10 - Checking for Update.
+[INFO] 24/Oct/2026 10:15:10 - No updates available.
+[INFO] 24/Oct/2026 10:15:13 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:15:13 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:15:13 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:15:13 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:15:13 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:15:13 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:15:13 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:15:14 - Checking for Update.
+[INFO] 24/Oct/2026 10:15:14 - No updates available.
+[INFO] 24/Oct/2026 10:15:17 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:15:17 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:15:17 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:15:17 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:15:17 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:15:17 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:15:17 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:15:18 - Checking for Update.
+[INFO] 24/Oct/2026 10:15:18 - No updates available.
+[INFO] 24/Oct/2026 10:20:07 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:20:07 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:20:07 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:20:07 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:20:07 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:20:07 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:20:07 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:20:08 - Checking for Update.
+[INFO] 24/Oct/2026 10:20:10 - No updates available.
+[INFO] 24/Oct/2026 10:20:16 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:20:16 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:20:16 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:20:16 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:20:16 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:20:16 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:20:16 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:20:17 - Checking for Update.
+[INFO] 24/Oct/2026 10:20:18 - No updates available.
+[INFO] 24/Oct/2026 10:20:25 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:20:25 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:20:25 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:20:25 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:20:25 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:20:25 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:20:25 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:20:25 - Checking for Update.
+[INFO] 24/Oct/2026 10:20:25 - No updates available.
+[INFO] 24/Oct/2026 10:20:29 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:20:29 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:20:29 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:20:29 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:20:29 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:20:29 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:20:29 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:20:30 - Checking for Update.
+[INFO] 24/Oct/2026 10:20:30 - No updates available.
+[INFO] 24/Oct/2026 10:20:40 - 
+  __  __       _    ____  _____       _  _    ____  
+ |  \/  | ___ | |__/ ___||  ___|_   _| || |  | ___| 
+ | |\/| |/ _ \| '_ \___ \| |_  \ \ / / || |_ |___ \ 
+ | |  | | (_) | |_) |__) |  _|  \ V /|__   _| ___) |
+ |_|  |_|\___/|_.__/____/|_|     \_/    |_|(_)____/ 
+
+[INFO] 24/Oct/2026 10:20:40 - Author: Ajin Abraham | opensecurity.in
+[INFO] 24/Oct/2026 10:20:40 - [0;37mMobile Security Framework v4.5.4[0m
+[INFO] 24/Oct/2026 10:20:40 - OS Environment: Linux (debian 12 bookworm) Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[INFO] 24/Oct/2026 10:20:40 - Python Version: 3.13.16
+[INFO] 24/Oct/2026 10:20:40 - CPU Cores: 10, Threads: 10, RAM: 11.50 GB
+[INFO] 24/Oct/2026 10:20:40 - MobSF Basic Environment Check
+[INFO] 24/Oct/2026 10:20:41 - Checking for Update.
+[INFO] 24/Oct/2026 10:20:41 - No updates available.

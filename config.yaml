@@ -18,12 +18,12 @@ tenancy:
 
 # Các module được kích hoạt theo mặc định
 enabled_modules:
+  # --- Cũ ---
   - m02_footprinting
   - m03_scanning
   - m04_enumeration
   - m05_vuln_analysis
   - m11_web_hacking
-  # Các module mới (mặc định tắt vì cần quyền/điều kiện)
   - m06_system_hacking
   - m08_sniffing
   - m13_wireless
@@ -34,20 +34,38 @@ enabled_modules:
   - mobile_scan
   - container_scan
   - iac_scan
+  - fuzzing
+  - adversary_emulation
+  - purple_team
+  - cloud_native
+  - ai_triage
+  - compliance_auto
+  - threat_model
+  - bug_bounty
+  - blockchain_audit
+  - ot_ics
+  # --- Mới (Bỏ comment để bật) ---
+  - continuous_fuzzing
+  - exploit_gen
+  - detection_codegen
+  - soc_agent
+  - supply_chain
+  - runtime_enforce
+  - deception
+  - threat_hunting
+  - c2_automation
+  - pqc_audit
 
 campaign:
   chain: true
   auto_resolve_after_misses: 3
-  # Cron: 0 */6 * * * — mỗi 6 giờ
-  # Interval: 6 (giờ)
   schedule:
     mode: "cron"
     cron: "0 */6 * * *"
     interval_hours: 6
 
 siem:
-  backend: null            # splunk | elasticsearch | syslog | null
-  # Chỉ dùng khi backend != null
+  backend: null
   splunk:
     hec_url: "${SPLUNK_HEC_URL}"
     hec_token: "${SPLUNK_HEC_TOKEN}"
@@ -62,51 +80,49 @@ siem:
 integrations:
   jira:
     enabled: false
-    # Đặt qua ENV: JIRA_URL, JIRA_EMAIL, JIRA_TOKEN, JIRA_PROJECT
   slack:
     enabled: false
-    # SLACK_WEBHOOK_URL
   defectdojo:
     enabled: false
-    # DEFECTDOJO_URL, DEFECTDOJO_TOKEN, DEFECTDOJO_ENGAGEMENT
 
 evasion:
-  default_level: "none"   # none | light | medium | heavy
-  proxy: false            # true → dùng Tor SOCKS5
+  default_level: "none"
+  proxy: false
 
 # Cấu hình từng module
 modules:
   m02_footprinting:
     whois: true
     dns: true
-    subdomain_bruteforce: true
+    subdomain_bruteforce: false
     theharvester: true
     google_dorks: true
-    subdomain_wordlist: "/usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt"
-  
+    subdomain_wordlist: null
+
   m03_scanning:
-    scan_type: "service"  # basic | service | full | udp | vuln
+    scan_type: "service"
     ports: "1-1000"
     timing: "T4"
-  
+    timeout: null
+
   m04_enumeration:
     smb: true
     snmp: true
     ldap: true
     nfs: true
     smtp: true
-  
+
   m05_vuln_analysis:
     searchsploit: true
     nikto: true
     sslscan: true
-  
+
   m11_web_hacking:
     nikto: true
     whatweb: true
     wpscan: false
     dirb: true
-    dirb_wordlist: "/usr/share/wordlists/dirb/common.txt"
+    dirb_wordlist: null
 
   m06_system_hacking:
     hydra: true
@@ -122,7 +138,7 @@ modules:
   m08_sniffing:
     iface: "eth0"
     duration: 30
-    bpf_filter: ""             # Ví dụ: "tcp port 80 or port 443"
+    bpf_filter: ""
     tcpdump: true
     arp_scan: true
     arp_spoof_detect: true
@@ -130,7 +146,7 @@ modules:
 
   m13_wireless:
     iface: "wlan0"
-    monitor_mode: false        # Đổi thành true nếu muốn bật
+    monitor_mode: false
     scan: true
     scan_duration: 30
     deauth: false
@@ -142,7 +158,7 @@ modules:
     wordlist: "/usr/share/wordlists/rockyou.txt"
 
   m16_cloud:
-    provider: "aws"            # aws | azure | gcp
+    provider: "aws"
     profile: null
     regions: "us-east-1"
     prowler: true
@@ -161,7 +177,6 @@ modules:
 
   threat_intel:
     sources: ["vt", "internetdb", "abuse", "greynoise", "otx"]
-    # API keys qua ENV: VIRUSTOTAL_API_KEY, SHODAN_API_KEY, ...
 
   msf_automation:
     enabled: false
@@ -179,15 +194,210 @@ modules:
     rescan: false
 
   container_scan:
-    image: null              # Ví dụ: "nginx:latest"
+    image: null
     k8s_cluster: false
     kube_hunter: false
     k8s_api: null
     cidr: null
 
   iac_scan:
-    path: null               # Ví dụ: "./infra/terraform"
+    path: null
     checkov: true
     tfsec: true
     framework: null
     soft_fail: true
+
+  fuzzing:
+    afl:
+      binary: "/path/to/target"
+      corpus: "/path/to/corpus"
+      source_dir: "/path/to/src"
+      timeout: 3600
+      dictionary: null
+      cmplog: false
+      instrument: false
+    boofuzz:
+      host: "127.0.0.1"
+      port: 8080
+      proto: "tcp"
+      template: "http"
+      timeout: 1800
+      crash_dir: "/tmp/boofuzz_crashes"
+
+  adversary_emulation:
+    caldera:
+      enabled: false
+      url: "http://localhost:8888"
+      api_key: "${CALDERA_API_KEY}"
+      adversary_id: null
+      group: "red"
+    atomic:
+      enabled: false
+      techniques: ["T1059.001", "T1003.001", "T1055"]
+      target: "local"
+      cleanup: false
+
+  purple_team:
+    detection_source: "splunk"
+    splunk_url: "${SPLUNK_URL}"
+    splunk_token: "${SPLUNK_TOKEN}"
+    elastic_url: "${ELASTIC_URL}"
+    techniques: ["T1059.001", "T1003.001", "T1055"]
+    time_window_sec: 300
+
+  cloud_native:
+    falco:
+      rules_file: null
+      helm_deploy: false
+      release: "falco"
+      namespace: "falco"
+      values: null
+    custodian:
+      policy_file: null
+      dry_run: true
+      region: "us-east-1"
+
+  ai_triage:
+    llm_provider: "anthropic"
+    findings: []
+
+  compliance_auto:
+    framework: "soc2"
+    output_dir: "./compliance_evidence"
+    aws:
+      profile: null
+      region: "us-east-1"
+
+  threat_model:
+    provider: "anthropic"
+    description: null
+    repo_url: null
+
+  bug_bounty:
+    scope_csv: null
+    scope_json: null
+    targets: []
+    auto_scan: false
+
+  blockchain_audit:
+    contract_path: null
+    slither: true
+    mythril: false
+    detectors: null
+
+  ot_ics:
+    protocols: ["modbus", "dnp3", "s7", "bacnet"]
+    safe: true
+
+  # ============================================================
+  # CẤU HÌNH CÁC MODULE MỚI NÂNG CAO
+  # ============================================================
+  continuous_fuzzing:
+    ossfuzz_dir: "/opt/oss-fuzz"
+    setup: false
+    project: "myproject"
+    build: true
+    sanitizer: "address"
+    run: false
+    harness: "fuzz_target"
+    seconds: 60
+    coverage: false
+    clusterfuzz_url: null
+
+  exploit_gen:
+    provider: "anthropic"
+    crash_output: null
+    crash_file: null
+    source_file: null
+    binary: null
+    binary_info:
+      pie: true
+      nx: true
+      canary: true
+
+  detection_codegen:
+    provider: "anthropic"
+    descriptions:
+      - text: "Brute force trên admin login endpoint"
+        technique: "T1110.001"
+        level: "high"
+    gaps: ["T1003.001", "T1055"]
+    rule_dir: null
+
+  soc_agent:
+    provider: "anthropic"
+    splunk_mcp_url: "${SPLUNK_MCP_URL}"
+    splunk_mcp_token: "${SPLUNK_MCP_TOKEN}"
+    splunk_query: "search index=notable | head 20"
+    slack_webhook: "${SLACK_WEBHOOK_URL}"
+    alerts: []
+
+  supply_chain:
+    target_image: null
+    source_dir: null
+    sbom: true
+    sbom_format: "cyclonedx-json"
+    scan: true
+    fail_on: "critical"
+    sign: false
+    slsa:
+      builder_id: "https://github.com/actions/runner"
+      source_uri: "https://github.com/org/repo"
+      commit_sha: "abc123"
+    verify_image: null
+    identity_regexp: null
+    oidc_issuer: null
+
+  runtime_enforce:
+    tetragon:
+      presets: ["kill_shell_spawn", "block_ptrace", "monitor_privileged"]
+      auto_apply: false
+      get_events: false
+      namespace: "default"
+    kubearmor:
+      name: "ceh-restrict"
+      selector: {app: "web"}
+      process_action: "Block"
+      file_action: "Block"
+      auto_apply: false
+
+  deception:
+    llm_deception:
+      provider: "anthropic"
+      system_type: "ubuntu"
+      test_inputs: ["whoami", "cat /etc/passwd", "sudo -l"]
+    tpot:
+      elastic_url: "${TPOT_ELASTIC_URL}"
+      hours: 24
+
+  threat_hunting:
+    elastic_url: "${ELASTIC_URL}"
+    index: "logs-*"
+    hours: 24
+    techniques: ["T1059.001", "T1003.001", "T1055", "T1071.001"]
+    spark_input: null
+    spark_output: null
+    spark_master: "local[*]"
+
+  c2_automation:
+    start_listener:
+      protocol: "mtls"
+      lhost: "0.0.0.0"
+      lport: 8888
+    generate:
+      name: "ceh-implant"
+      os: "linux"
+      arch: "amd64"
+      format: "elf"
+      c2_url: "mtls://127.0.0.1:8888"
+      beacon: false
+      save: "/tmp/implant"
+    list_sessions: true
+    list_beacons: false
+    execute: []
+    socks5: null
+
+  pqc_audit:
+    path: null
+    exclude_dirs: ["vendor", "third_party", "node_modules", ".git"]
+    fail_on_critical: false

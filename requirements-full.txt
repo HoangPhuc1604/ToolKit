@@ -1,4 +1,6 @@
-# Core
+# ============================================================
+# CORE DEPENDENCIES
+# ============================================================
 python-whois>=0.9.4
 dnspython>=2.6.1
 requests>=2.31.0
@@ -7,58 +9,81 @@ PyYAML>=6.0
 jinja2>=3.1.0
 colorama>=0.4.6
 
-# Dashboard
+# ============================================================
+# DASHBOARD & API
+# ============================================================
 fastapi>=0.110.0
 uvicorn[standard]>=0.29.0
 websockets>=12.0
-
-# Multi-tenant auth
-pyjwt>=2.8.0
-passlib[bcrypt]>=1.7.4
 python-multipart>=0.0.9
 
-# Sniffing / wireless
-scapy>=2.5.0
+# ============================================================
+# MULTI-TENANT AUTH
+# ============================================================
+pyjwt>=2.8.0
+passlib[bcrypt]>=1.7.4
 
-# LLM (tùy chọn)
+# ============================================================
+# NETWORK / SNIFFING
+# ============================================================
+scapy>=2.5.0
+paramiko>=3.4.0
+
+# ============================================================
+# LLM & AI (AI Triage, Threat Model, Exploit Gen, Deception)
+# ============================================================
 anthropic>=0.25.0
 openai>=1.20.0
+scikit-learn>=1.4.0
 
-# Multi-target / campaign
+# ============================================================
+# MULTI-TARGET / CAMPAIGN
+# ============================================================
 APScheduler>=3.10.0
 Ray>=2.9.0
 
-# Attack graph
-networkx
+# ============================================================
+# GRAPH & SIEM
+# ============================================================
+networkx==3.4.2
 pyvis>=0.3.2
-
-# Integrations
-# (requests đã được khai báo ở phần Core)
-
-# Shell handler
-#pwncat-cs>=0.9.0    # chỉ Linux/macOS
-
-# SIEM (tùy chọn)
 elasticsearch>=8.0.0
+elasticsearch-dsl>=8.12.0
 splunk-sdk>=2.0.0
 
-# Agentless SSH
-paramiko>=3.4.0
-
-# Metasploit automation
+# ============================================================
+# OFFENSIVE TOOLS
+# ============================================================
 pymetasploit3>=1.0.0
+# pwncat-cs>=0.9.0  (Đã cài riêng với --no-deps trong Dockerfile)
+python-afl>=0.3.0
+boofuzz>=0.4.0
+atomic-operator>=1.0.0
+sliver-py>=0.0.18
 
-# Threat intel SDKs (tùy chọn)
+# ============================================================
+# THREAT INTEL SDKs
+# ============================================================
 vt-py>=0.18.0
 shodan>=1.31.0
 censys>=2.2.0
 
-# Mobile
-# MobSF chạy riêng, không cần pip
-
-# IaC
+# ============================================================
+# CLOUD / DEVSECOPS
+# ============================================================
+boto3>=1.34.0
+kubernetes>=29.0.0
 checkov>=3.2.0
-# tfsec cài qua brew/apt
 
-# ML/LLM nâng cao
-scikit-learn>=1.4.0    # anomaly detection trên findings
+# ============================================================
+# BLOCKCHAIN & FUZZING
+# ============================================================
+slither-analyzer>=0.10.0
+# mythril>=0.24.0 (Đã cài riêng với --no-deps trong Dockerfile)
+
+# ============================================================
+# NEW MODULES: SOC, HUNTING, DETECTION
+# ============================================================
+sigma-cli>=0.9.0
+pySigma>=0.11.0
+pyspark>=3.5.0
